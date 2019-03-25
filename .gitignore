@@ -1,0 +1,5 @@
+node_modules
+workshop/public
+public
+packaged.yaml
+.DS_Store

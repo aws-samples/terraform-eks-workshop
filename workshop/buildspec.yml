@@ -1,0 +1,25 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - pip install Pygments
+      - wget https://github.com/gohugoio/hugo/releases/download/v0.53/hugo_0.53_Linux-64bit.deb
+      - dpkg -i hugo_0.53_Linux-64bit.deb
+
+  build:
+    commands:
+      - hugo --source website --destination ../public --quiet
+      
+artifacts:
+  secondary-artifacts:
+    WebsiteArtifact:
+      base-directory: public
+      files:
+        - '**/*'
+      name: website-$(date +%Y-%m-%d)
+    ResourcesArtifact:
+      base-directory: resources
+      files:
+        - '**/*'
+      name: resources-$(date +%Y-%m-%d)
