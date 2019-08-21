@@ -1,72 +1,75 @@
 # workshop-sample
 
-This project allows you to scaffold a workshop similar to those available at [cdkworkshop.com](https://cdkworkshop.com/), [eksworkshop.com](https://eksworkshop.com/), or [ecsworkshop.com](https://ecsworkshop.com/).
+This project allows you to scaffold a workshop using a AWS-styled Hugo theme similar to those available at [cdkworkshop.com](https://cdkworkshop.com/), [eksworkshop.com](https://eksworkshop.com/), or [ecsworkshop.com](https://ecsworkshop.com/).
 
 ```bash
 .
-├── buildspec.yml                     <-- Build Spec used to build this project in CodeBuild
 ├── LICENSE.txt                       <-- License file
 ├── README.md                         <-- This instructions file
 ├── deck                              <-- Directory for presentation deck
-├── images                            <-- Directory for GitHub README images
 ├── resources                         <-- Directory for workshop resources
 │   ├── code                          <-- Directory for workshop modules code
 │   ├── policies                      <-- Directory for workshop modules IAM Roles and Policies
 │   └── templates                     <-- Directory for workshop modules CloudFormation templates
-├── website                           <-- Directory for Hugo workshop website
 └── workshop                          
-    ├── buildspec.yml                 <-- AWS CodeBuild build script
-    └── templates                     <-- Website Stack CloudFormation templates
-        ├── pipeline-template.yaml    <-- Deployment pipeline from GitHub to static S3 website
-        └── workshop-cloudfront.yaml  <-- CloudFront distribution for HTTPS access to S3 website
+    ├── buildspec.yml                 <-- AWS CodeBuild build script for building the workshop website
+    └── content                       <-- Markdown files for pages/steps in workshop
+    └── static                        <-- Any static assets to be hosted alongside the workshop (ie. images, scripts, documents, etc)
+    └── themes                        <-- AWS Style Hugo Theme (Do not edit!)
 ```
 
 ## Requirements
 
-1. [Fork this repository](https://help.github.com/articles/fork-a-repo/).
+1. [Clone this repository](https://help.github.com/articles/fork-a-repo/).
+2. [Install Hugo locally](https://gohugo.io/overview/quickstart/).
 
-2. Create a [GitHub personal OAuth access token](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/).  `repo` permissions are required.
+## Create your first chapter page
 
-## Instructions
+Chapters are pages that contain other child pages. It has a special layout style and usually just contains a _brief abstract_ of the section.
 
-[Installing the Sample Workshop in your AWS Account](#installing-the-sample-workshop-in-your-aws-account)
+```markdown
+Discover what this template is all about and the core concepts behind it.
+```
 
-## Install the Sample Workshop in your AWS Account
+This template provides archetypes to create skeletons for your workshop. Begin by creating your first chapter page with the following command
 
-1. Complete the [Requirements](#requirements).
+```bash
+hugo new --kind chapter intro/_index.en.md
+```
 
-1. Click on the CloudFormation Launch link below that corresponds to the AWS Region in which you want to deploy the workshop.
+By opening the given file, you should see the property `chapter=true` on top, meaning this page is a _chapter_.
 
-    [![US East (N. Virginia)](https://samdengler.github.io/cloudformation-launch-stack-button-svg/images/us-east-1.svg)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?stackName=workshop-sample&templateURL=https://s3.amazonaws.com/workshop-sample-us-east-1/pipeline-template.yaml&param_GitHubBranch=master&param_GitHubRepository=workshop-sample)      
+By default all chapters and pages are created as a draft. If you want to render these pages, remove the property `draft = true` from the metadata.
 
+## Create your first content pages
 
-1. This workshop uses the CloudFormation CAPABILITY_AUTO_EXPAND capability, which requires the new CloudFormation Console UI.  If you see the following message at the top of the page, click on the link to **Try it out now and provide us feedback.** to use the new interface.
+Then, create content pages inside the previously created chapter. Here are two ways to create content in the chapter:
 
-    ![CloudFormation New UI Dialog](images/cloudformation-new-ui-dialog.png)
+```bash
+hugo new intro/first-content.en.md
+hugo new intro/second-content/_index.en.md
+```
 
-1. Once the CloudFormation **Quick create stack** page loads in your web browser, optionally update the **Stack name**.
+Feel free to edit thoses files by adding some sample content and replacing the `title` value in the beginning of the files. 
 
-1. In the **Parameters** section, provide values for:
+## Launching the website locally
 
-    | Parameter | Description |
-    | --- | --- |
-    | GitHubBranch | The branch on the forked GitHub Repository that will trigger the pipeline (defaults to **master**) |
-    | GitHubOAuthToken | The [GitHub personal OAuth access token](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/) created in the [Requirements](#requirements) section |
-    | GitHubRepository | The name of forked GitHub Repository (defaults to **workshop-sample**) |
-    | GitHubUsername | The GitHub username of the forked GitHub Repository |
+Launch by using the following command:
 
-1. In the **Capabilities and transforms** section, check the following boxes:
+```bash
+hugo serve
+```
 
-    ![CloudFormation Capabilities](images/cloudformation-capabilities.png)
+Go to `http://localhost:1313`
 
-1. If you don’t see a checkbox for CAPABILITY_AUTO_EXPAND, look for a message at the top of the page (image below) and click on the link to **Try it out now and provide us feedback.** to use the new interface.
+You should notice three things:
 
-    ![CloudFormation New UI Dialog](images/cloudformation-new-ui-dialog.png)
+1. You have a left-side **Intro** menu, containing two submenus with names equal to the `title` properties in the previously created files.
+2. The home page explains how to customize it by following the instructions.
+3. When you run `hugo serve`, when the contents of the files change, the page automatically refreshes with the changes. Neat!
 
-1. Click the **Create stack** button.
+Alternatively, you can run the following command in a terminal window to tell Hugo to automatically rebuild whenever a file is changed. This can be helpful when rapidly iterating over content changes.
 
-1. Once the CloudFormation Stack has been created, click on the **Options** tab and note the value for **WebsiteURL**.
-
-1. Paste the **WebsiteURL** into your web browser's URL address bar to visit the templated workshop website.
-
-1. Congratulations!  You now have a working workshop website.
+```bash
+hugo serve -D
+```
