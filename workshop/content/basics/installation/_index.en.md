@@ -1,6 +1,5 @@
 +++
 title = "Installation"
-chapter = false
 weight = 12
 +++
 The following steps are here to help you initialize your new workshop. If you don't know Hugo at all, we strongly suggest you learn more about it by following this [great documentation for beginners](https://gohugo.io/overview/quickstart/).
@@ -10,7 +9,24 @@ The following steps are here to help you initialize your new workshop. If you do
 If you haven't already, make a copy of this entire directory and rename it something descriptive, similar to the title of your workshop.
 
 ```bash
-cp -R workshop-template/ my-first-worshop/
+cp -R Aws-workshop-template/ my-first-worshop/
+```
+
+## What's Included
+
+This project the following folders:
+
+* `deck`: The location to store your presentation materials, if not already stored centrally in a system like KnowledgeMine or Wisdom.
+* `resources`: Store any example code, IAM policies, or Cloudformation templates needed by your workshop here.
+* `workshop`: This is the core workshop folder. This is generated as HTML and hosted for presentation for customers.
+
+
+## Navigate to the **workshop directory
+
+All command line directions in this documentation assume you are in the `workshop` directory. Navigate there now, if you aren't there already.
+
+```bash
+cd my-first-workshop/workshop
 ```
 
 ## Create your first chapter page
@@ -23,7 +39,7 @@ Discover what this template is all about and the core concepts behind it.
 
 renders as 
 
-![A Chapter]("{{ (.Resources.GetMatch "chapter.png").Content | base64Encode }}?classes=shadow&width=60pc")
+{{< img "chapter.en.png" "A Chapter" >}}
 
 This template provides archetypes to create skeletons for your workshop. Begin by creating your first chapter page with the following command
 

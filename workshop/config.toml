@@ -23,6 +23,7 @@ pygmentsStyle = "monokai"
   disableAssetsBusting = true
   disableLanguageSwitchingButton = false
   disableShortcutsTitle = true
+  disableInlineCopyToClipBoard = true
 
 [outputs]
 home = [ "HTML", "RSS", "JSON"]

@@ -34,6 +34,7 @@ Discover what this template is all about and the core concepts behind it.
 This template provides archetypes to create skeletons for your workshop. Begin by creating your first chapter page with the following command
 
 ```bash
+cd workshop
 hugo new --kind chapter intro/_index.en.md
 ```
 

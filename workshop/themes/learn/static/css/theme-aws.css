@@ -161,6 +161,13 @@ a:hover {
     border-color: var(--MENU-SECTION-HR-color);
 }
 
+#sidebar #shortcuts h3 {
+    font-family: "Amazon Eber", "Novacento Sans Wide", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+    color: white !important;
+    margin-top:1rem;
+    padding-left: 1rem;
+}
+
 #navigation a.nav-prev, #navigation a.nav-next {
     color: #f19e39 !important;
 }
