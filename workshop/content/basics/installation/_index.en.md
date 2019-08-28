@@ -21,7 +21,7 @@ This project the following folders:
 * `workshop`: This is the core workshop folder. This is generated as HTML and hosted for presentation for customers.
 
 
-## Navigate to the **workshop directory
+## Navigate to the `workshop` directory
 
 All command line directions in this documentation assume you are in the `workshop` directory. Navigate there now, if you aren't there already.
 
@@ -49,7 +49,7 @@ hugo new --kind chapter intro/_index.md
 
 By opening the given file, you should see the property `chapter=true` on top, meaning this page is a _chapter_.
 
-By default all chapters and pages are created as a draft. If you want to render these pages, remove the property `draft: true` from the metadata.
+By default all chapters and pages are created as a draft. If you want to render these pages, remove the property `draft: true` from the front matter section.
 
 ## Create your first content pages
 
