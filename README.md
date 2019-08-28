@@ -41,7 +41,7 @@ This project the following folders:
 * `workshop`: This is the core workshop folder. This is generated as HTML and hosted for presentation for customers.
 
 
-## Navigate to the **workshop directory
+## Navigate to the `workshop` directory
 
 All command line directions in this documentation assume you are in the `workshop` directory. Navigate there now, if you aren't there already.
 
