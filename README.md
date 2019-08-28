@@ -4,7 +4,7 @@ This project allows you to scaffold a workshop using a AWS-styled Hugo theme sim
 
 ```bash
 .
-├── LICENSE.txt                       <-- License file
+├── metadata.yml                      <-- Metadata file with descriptive information about the workshop
 ├── README.md                         <-- This instructions file
 ├── deck                              <-- Directory for presentation deck
 ├── resources                         <-- Directory for workshop resources
