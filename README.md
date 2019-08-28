@@ -13,6 +13,7 @@ This project allows you to scaffold a workshop using a AWS-styled Hugo theme sim
 │   └── templates                     <-- Directory for workshop modules CloudFormation templates
 └── workshop                          
     ├── buildspec.yml                 <-- AWS CodeBuild build script for building the workshop website
+    ├── config.toml                   <-- Hugo configuration file for the workshop website
     └── content                       <-- Markdown files for pages/steps in workshop
     └── static                        <-- Any static assets to be hosted alongside the workshop (ie. images, scripts, documents, etc)
     └── themes                        <-- AWS Style Hugo Theme (Do not edit!)
@@ -22,6 +23,31 @@ This project allows you to scaffold a workshop using a AWS-styled Hugo theme sim
 
 1. [Clone this repository](https://help.github.com/articles/fork-a-repo/).
 2. [Install Hugo locally](https://gohugo.io/overview/quickstart/).
+
+## Create your project
+
+If you haven't already, make a copy of this entire directory and rename it something descriptive, similar to the title of your workshop.
+
+```bash
+cp -R Aws-workshop-template/ my-first-worshop/
+```
+
+## What's Included
+
+This project the following folders:
+
+* `deck`: The location to store your presentation materials, if not already stored centrally in a system like KnowledgeMine or Wisdom.
+* `resources`: Store any example code, IAM policies, or Cloudformation templates needed by your workshop here.
+* `workshop`: This is the core workshop folder. This is generated as HTML and hosted for presentation for customers.
+
+
+## Navigate to the **workshop directory
+
+All command line directions in this documentation assume you are in the `workshop` directory. Navigate there now, if you aren't there already.
+
+```bash
+cd my-first-workshop/workshop
+```
 
 ## Create your first chapter page
 
