@@ -1,13 +1,12 @@
 +++
-title = "Img"
+title = "Image"
 description = "Displays a preformatted image on your page"
 weight = 35
 +++
 
-The Img shortcode displays a preformatted image that is stored in your Page Bundle on your page.
+The Img shortcode displays a preformatted image that is stored in your [Page Bundle](https://gohugo.io/content-management/page-bundles/) on your page.
 
 ## Usage
-
 
 This shortcode takes two parameters:  
 
