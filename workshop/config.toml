@@ -1,4 +1,5 @@
-baseURL = "https://helloworld.immersionday.com"
+RelativeURLs=true
+CanonifyURLs=true
 languageCode = "en-US"
 defaultContentLanguage = "en"
 
