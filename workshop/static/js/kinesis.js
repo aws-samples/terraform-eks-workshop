@@ -9,7 +9,7 @@ var language = document.getElementById('language').title;
 // Parse versions and get version
 arr = versions.split(',')
 arr.forEach(function (v) {
-    if (v.indexOf('fr')){
+    if (v.indexOf(language)){
         version = v.split(':')[1]
     }
 })
