@@ -12,9 +12,8 @@ logger.setLevel(logging.INFO)
 
 
 # DOES: Analize language used in the content, then update version of the content.
-# If this commit is first commit, then v1.0.0
-# If structure is not changed, then v1.0.0 -> v1.0.1
-# If structure is changed, then v1.2.2 -> v1.3.0
+# If this commit is first commit, then version = 1
+# If this commit is not first commit, then version += 1
 
 def main():
     # Setup environment
@@ -44,20 +43,23 @@ def main():
                 Limit = 1 
              )
             previous_structure = response['Items'][0]['structure']
-            previous_version = response['Items'][0]['version']
+            # previous_version = response['Items'][0]['version']
+            previous_version = int(response['Items'][0]['version'])
 
             print('The older record is found\n')
-            if current_structure == previous_structure:
-                # v1.2.3 -> v1.2.4
-                v = previous_version.split('.')
-                v[2] = str(int(v[2]) + 1)
-                current_version = '.'.join(v)
-            else:
-                # v1.2.3 -> v1.3.0
-                v = previous_version.split('.')
-                v[1] = str(int(v[1]) + 1)
-                v[2] = str(0)
-                current_version = '.'.join(v)
+            # if current_structure == previous_structure:
+                # # v1.2.3 -> v1.2.4
+                # v = previous_version.split('.')
+                # v[2] = str(int(v[2]) + 1)
+                # current_version = '.'.join(v)
+            # else:
+            #     # v1.2.3 -> v1.3.0
+            #     v = previous_version.split('.')
+            #     v[1] = str(int(v[1]) + 1)
+            #     v[2] = str(0)
+            #     current_version = '.'.join(v)
+
+            current_versiont = previous_version + 1
             
             response = version_table.update_item(
                 Key = 
@@ -75,7 +77,7 @@ def main():
                 Key = 
                 {
                     'workshop_lang': workshop_id,
-                    'version' : 'latest'
+                    'version' : 0
                 },
                 UpdateExpression='SET available_languages = :val1, updated_at = :val2',
                 ExpressionAttributeValues={
@@ -87,7 +89,7 @@ def main():
 
         except :
             print('This is the first record\n')
-            current_version = '1.0.0'
+            current_version = 1
             now = datetime.datetime.now().strftime('%s')
             # Send structure to dynamoDB
             response = version_table.put_item(
@@ -101,7 +103,7 @@ def main():
             response = version_table.put_item(
                 Item={
                     "workshop_lang": workshop_id,
-                    "version": 'latest',
+                    "version": 0,
                     "available_languages": dict_toml['Languages'],
                     "created_at" : now
                 }

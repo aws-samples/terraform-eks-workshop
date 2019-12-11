@@ -54,11 +54,12 @@ AWS.config.credentials.get(function (err) {
     var isRegisteredered
     // check whether user use HTML5
     if (window.localStorage) {
-        // generate uuid if not data in localstorage
+        // generate userId if not data in localstorage
         userId = localStorage.getItem('userId');
         isRegistered = 'false';
         if (userId == null) {
-            userId = generateUuid();
+            //userId = generateUuid();
+            userId = AWS.config.credentials.identityId;
             localStorage.setItem('userId', userId);
             isRegistered = 'true';
         }
