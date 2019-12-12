@@ -2,97 +2,95 @@
 var awsRegion = document.getElementById('awsRegion').title;
 var kinesisStreamName = document.getElementById('kinesisStreamName').title;
 var cognitoPoolId = document.getElementById('cognitoPoolId').title;
-var deliveryId = document.getElementById('deliveryId').title;
-var versions = document.getElementById('versions').title;
-var language = document.getElementById('language').title;
+var eventId = document.getElementById('eventId').title;
+
+// deault:10sec
+var interval = 10;
 
 // Parse versions and get version
 arr = versions.split(',')
 arr.forEach(function (v) {
-    if (v.indexOf(language)){
+    if (v.indexOf(language)) {
         version = v.split(':')[1]
     }
 })
 
-// Generate uuid func
-function generateUuid() {
-    // https://github.com/GoogleChrome/chrome-platform-analytics/blob/master/src/internal/identifier.js
-    // const FORMAT: string = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx";
-    let chars = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".split("");
-    for (let i = 0, len = chars.length; i < len; i++) {
-        switch (chars[i]) {
-            case "x":
-                chars[i] = Math.floor(Math.random() * 16).toString(16);
-                break;
-            case "y":
-                chars[i] = (Math.floor(Math.random() * 4) + 8).toString(16);
-                break;
+// Send log to Kinesis
+var sendLog = function () {
+    // Configure Credentials to use Cognito
+    AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+        IdentityPoolId: cognitoPoolId
+    });
+    AWS.config.region = awsRegion;
+    AWS.config.credentials.get(function (err) {
+        if (err) {
+            // alert('Error retrieving credentials.');
+            console.error(err);
+            return;
         }
-    }
-    return chars.join("");
+        // create Amazon Kinesis service object
+        var kinesis = new AWS.Kinesis({
+            apiVersion: '2013-12-02'
+        });
+
+        // create user Id
+        var userId
+        // check whether user use HTML5
+        if (window.localStorage) {
+            // generate userId if not data in localstorage
+            userId = localStorage.getItem('userId');
+            isRegistered = 'false';
+            if (userId == null) {
+                userId = AWS.config.credentials.identityId;
+                localStorage.setItem('userId', userId);
+                isRegistered = 'true';
+            }
+        } else {
+            userId = 'guestUser'
+        }
+
+
+        // create Amazon Kinesis service object
+        var kinesis = new AWS.Kinesis({
+            apiVersion: '2013-12-02'
+        });
+        var recordData = [];
+        var record = {
+            Data: JSON.stringify({
+                page_path: window.location.pathname,
+                delivery_id: deliveryId,
+                user_id: userId,
+                is_regitered: isRegistered,
+                version: version,
+                language: language
+            }),
+            PartitionKey: 'partition-' + userId
+        };
+        recordData.push(record);
+
+        kinesis.putRecords({
+            Records: recordData,
+            StreamName: kinesisStreamName
+        }, function (err, data) {
+            if (err) {
+                console.error(err);
+            }
+        });
+
+    });
+};
+
+var is_focus = false;
+// Call Send Log Func by every 10 sec when the Tab is focused 
+window.onfocus = function () {
+    is_focus = true;
+}
+window.onblur = function () {
+    is_focus = false;
 }
 
-
-// Configure Credentials to use Cognito
-AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-    IdentityPoolId: cognitoPoolId
-});
-AWS.config.region = awsRegion;
-AWS.config.credentials.get(function (err) {
-    if (err) {
-        // alert('Error retrieving credentials.');
-        console.error(err);
-        return;
+var check_interval = setInterval(function () {
+    if (is_focus) {
+        sendLog();
     }
-    // create Amazon Kinesis service object
-    var kinesis = new AWS.Kinesis({
-        apiVersion: '2013-12-02'
-    });
-
-    // create user Id
-    var userId
-    var isRegisteredered
-    // check whether user use HTML5
-    if (window.localStorage) {
-        // generate userId if not data in localstorage
-        userId = localStorage.getItem('userId');
-        isRegistered = 'false';
-        if (userId == null) {
-            //userId = generateUuid();
-            userId = AWS.config.credentials.identityId;
-            localStorage.setItem('userId', userId);
-            isRegistered = 'true';
-        }
-    } else {
-        userId = 'guestUser'
-    }
-
-
-    // create Amazon Kinesis service object
-    var kinesis = new AWS.Kinesis({
-        apiVersion: '2013-12-02'
-    });
-    var recordData = [];
-    var record = {
-        Data: JSON.stringify({
-            page_path: window.location.pathname,
-            delivery_id: deliveryId,
-            user_id: userId,
-            is_regitered: isRegistered,
-            version: version,
-            language: language
-        }),
-        PartitionKey: 'partition-' + userId
-    };
-    recordData.push(record);
-
-    kinesis.putRecords({
-                Records: recordData,
-                StreamName: kinesisStreamName
-            }, function(err, data) {
-                if (err) {
-                    console.error(err);
-                }
-        });
-    
-});
+}, interval * 1000);
