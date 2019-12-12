@@ -2,10 +2,9 @@
 var awsRegion = document.getElementById('awsRegion').title;
 var kinesisStreamName = document.getElementById('kinesisStreamName').title;
 var cognitoPoolId = document.getElementById('cognitoPoolId').title;
-var eventId = document.getElementById('eventId').title;
-
-// deault:10sec
-var interval = 10;
+var deliveryId = document.getElementById('deliveryId').title;
+var versions = document.getElementById('versions').title;
+var language = document.getElementById('language').title;
 
 // Parse versions and get version
 arr = versions.split(',')
@@ -17,6 +16,7 @@ arr.forEach(function (v) {
 
 // Send log to Kinesis
 var sendLog = function () {
+    console.log('Send Log')
     // Configure Credentials to use Cognito
     AWS.config.credentials = new AWS.CognitoIdentityCredentials({
         IdentityPoolId: cognitoPoolId
@@ -80,17 +80,22 @@ var sendLog = function () {
     });
 };
 
-var is_focus = false;
 // Call Send Log Func by every 10 sec when the Tab is focused 
+var interval_sec = 10;
+var is_focus = true;
+
 window.onfocus = function () {
+    console.log('Start focus')
     is_focus = true;
 }
 window.onblur = function () {
+    console.log('End focus')
     is_focus = false;
 }
 
 var check_interval = setInterval(function () {
+    console.log(is_focus)
     if (is_focus) {
         sendLog();
     }
-}, interval * 1000);
+}, interval_sec * 1000);
