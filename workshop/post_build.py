@@ -17,7 +17,7 @@ logger.setLevel(logging.INFO)
 
 def main():
     # Setup environment
-    workshop_id = os.environ['WORKSHOP_NAME']
+    sturcture_id = os.environ['WORKSHOP_NAME']
     version_table_name = os.environ['VERSION_TABLE']
     dynamodb = boto3.resource('dynamodb')
     version_table = dynamodb.Table(version_table_name)
@@ -38,7 +38,7 @@ def main():
         try:
             now = datetime.datetime.now().strftime('%s')
             response = version_table.query(
-                KeyConditionExpression=Key('workshop_lang').eq(workshop_id+"+"+lang),
+                KeyConditionExpression=Key('structureId').eq(sturcture_id+"+"+lang),
                 ScanIndexForward = False,
                 Limit = 1 
              )
@@ -64,7 +64,7 @@ def main():
             response = version_table.update_item(
                 Key = 
                 {
-                    'workshop_lang': workshop_id + "+" + lang,
+                    'structureId': sturcture_id + "+" + lang,
                     'version' : current_version
                 },
                 UpdateExpression='SET structure = :val1, created_at = :val2',
@@ -73,18 +73,18 @@ def main():
                     ':val2': now
                 }
             )
-            response = version_table.update_item(
-                Key = 
-                {
-                    'workshop_lang': workshop_id,
-                    'version' : 0
-                },
-                UpdateExpression='SET available_languages = :val1, updated_at = :val2',
-                ExpressionAttributeValues={
-                    ':val1': dict_toml['Languages'],
-                    ':val2': now
-                }
-            )
+            # response = version_table.update_item(
+            #     Key = 
+            #     {
+            #         'structureId': sturcture_id,
+            #         'version' : 0
+            #     },
+            #     UpdateExpression='SET available_languages = :val1, updated_at = :val2',
+            #     ExpressionAttributeValues={
+            #         ':val1': dict_toml['Languages'],
+            #         ':val2': now
+            #     }
+            # )
 
 
         except :
@@ -94,20 +94,20 @@ def main():
             # Send structure to dynamoDB
             response = version_table.put_item(
                 Item={
-                    "workshop_lang": workshop_id+"+"+lang,
+                    "structureId": sturcture_id+"+"+lang,
                     "version": current_version,
                     "structure": current_structure,
                     "created_at": now
                 }
             )
-            response = version_table.put_item(
-                Item={
-                    "workshop_lang": workshop_id,
-                    "version": 0,
-                    "available_languages": dict_toml['Languages'],
-                    "created_at" : now
-                }
-            )
+            # response = version_table.put_item(
+            #     Item={
+            #         "structureId": sturcture_id,
+            #         "version": 0,
+            #         "available_languages": dict_toml['Languages'],
+            #         "created_at" : now
+            #     }
+            # )
         # list up current versions to inject toml
         content_current_versions += str(lang) + ':' + str(current_version)
         if i < number_of_languages:
@@ -124,7 +124,7 @@ if __name__ == "__main__":
     debug = False
     if debug:
         logger.setLevel(logging.DEBUG)
-        os.environ['WORKSHOP_NAME'] = 'your_workshop_id'
+        os.environ['WORKSHOP_NAME'] = 'your_sturcture_id'
         os.environ['VERSION_TABLE'] = 'test_content_version_table'
             
     main()
