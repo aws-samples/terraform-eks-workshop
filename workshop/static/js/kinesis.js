@@ -5,6 +5,7 @@ var cognitoPoolId = document.getElementById('cognitoPoolId').title;
 var deliveryId = document.getElementById('deliveryId').title;
 var versions = document.getElementById('versions').title;
 var language = document.getElementById('language').title;
+var scriptVersion = '2019-12-16'
 
 // Parse versions and get version
 arr = versions.split(',')
@@ -49,11 +50,6 @@ var sendLog = function () {
             userId = 'guestUser'
         }
 
-
-        // create Amazon Kinesis service object
-        var kinesis = new AWS.Kinesis({
-            apiVersion: '2013-12-02'
-        });
         var recordData = [];
         var record = {
             Data: JSON.stringify({
@@ -62,7 +58,8 @@ var sendLog = function () {
                 user_id: userId,
                 is_regitered: isRegistered,
                 version: version,
-                language: language
+                language: language,
+                scriptVersion: scriptVersion
             }),
             PartitionKey: 'partition-' + userId
         };
