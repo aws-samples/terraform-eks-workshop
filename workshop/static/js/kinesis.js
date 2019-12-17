@@ -2,18 +2,10 @@
 var awsRegion = document.getElementById('awsRegion').title;
 var kinesisStreamName = document.getElementById('kinesisStreamName').title;
 var cognitoPoolId = document.getElementById('cognitoPoolId').title;
-var deliveryId = document.getElementById('deliveryId').title;
-var versions = document.getElementById('versions').title;
+var deliveryId = document.getElementById('contentId').title;
+var version = document.getElementById('versions').title;
 var language = document.getElementById('language').title;
 var scriptVersion = '2019-12-16'
-
-// Parse versions and get version
-arr = versions.split(',')
-arr.forEach(function (v) {
-    if (v.indexOf(language)) {
-        version = v.split(':')[1]
-    }
-})
 
 // Send log to Kinesis
 var sendLog = function () {

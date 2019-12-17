@@ -30,7 +30,6 @@ phases:
     commands:
       - cd $CODEBUILD_SRC_DIR/workshop
       - python3 post_build.py
-      - hugo --quiet
 
 artifacts:
   files:
