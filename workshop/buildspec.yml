@@ -4,6 +4,7 @@ phases:
     runtime-versions:
       golang: 1.12
       nodejs: 10
+      python: 3.7
     commands:
       - echo Entered the install phase...
       - apt-get -qq update && apt-get -qq install curl
@@ -12,6 +13,11 @@ phases:
       - dpkg -i hugo.deb
     finally:
       - echo Installation done
+  pre_build:
+    commands:
+      - cd $CODEBUILD_SRC_DIR/workshop
+      - pip install -r requirements.txt
+      - python3 pre_build.py
   build:
     commands:
       - echo Entered the build phase ...
@@ -20,6 +26,11 @@ phases:
       - hugo --quiet
     finally:
       - echo Building the HTML files finished
+  post_build:
+    commands:
+      - cd $CODEBUILD_SRC_DIR/workshop
+      - python3 post_build.py
+
 artifacts:
   files:
     - "**/*"
