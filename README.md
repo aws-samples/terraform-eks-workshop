@@ -93,10 +93,22 @@ You should notice three things:
 
 1. You have a left-side **Intro** menu, containing two submenus with names equal to the `title` properties in the previously created files.
 2. The home page explains how to customize it by following the instructions.
-3. When you run `hugo serve`, when the contents of the files change, the page automatically refreshes with the changes. Neat!
+3. When you run `hugo server`, when the contents of the files change, the page automatically refreshes with the changes. Neat!
 
 Alternatively, you can run the following command in a terminal window to tell Hugo to automatically rebuild whenever a file is changed. This can be helpful when rapidly iterating over content changes.
 
 ```bash
-hugo serve -D
+hugo server
+```
+
+## Things to be aware of:
+
+* Please ensure you remove the links to "Event Outfitters" from the bottom of the front page before you publish your workshop.
+* The template includes two sample languages, French and English (eg "_index.en.md" and "_index.fr.md"). Please don't move everything to "_index.md" as other people may want to translate your workshop in future!
+* However, you should remove the example French language selection from the config.toml unless you plan to provide a French translation. Delete the following lines:
+```
+[Languages.fr]
+title = "Mon atelier AWS"
+weight = 2
+languageName = "Français"
 ```
