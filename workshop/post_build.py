@@ -7,6 +7,9 @@ import toml
 import logging
 import datetime
 import base64
+import requests
+from requests_aws4auth import AWS4Auth
+from botocore.utils import ContainerMetadataFetcher
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
@@ -15,12 +18,15 @@ logger.setLevel(logging.INFO)
 
 def main():
     # Setup environment
+    region = os.environ['RT_REGION']
     workshop_name = os.environ['WORKSHOP_NAME']
     version_table_name = os.environ['VERSION_TABLE']
     dynamodb = boto3.resource('dynamodb')
-    version_table = dynamodb.Table(version_table_name)
-    
+    #version_table = dynamodb.Table(version_table_name)
+    gql_endpoint = os.environ['GQL_ENDPOINT']
+    # for now content handle only workshop, in future will be added delivery 
     content_id = workshop_name
+    
     content_structures = {}
     # Analize languages in toml file
     dict_toml = toml.load(open('./config.toml'))
@@ -34,28 +40,79 @@ def main():
         content_structures.update({lang:current_structure})
     structure_json = json.loads(str(content_structures).replace("\'", "\""))
 
-    # Send structure data to DynamoDB Table
-    print('Start to send structure data\n')
-    query_response = version_table.query(
-        KeyConditionExpression=Key('content_id').eq(content_id),
-        ScanIndexForward = False,
-        Limit = 1 
-        )
-    # Current version is already updated in pre_build.py 
-    current_version = int(query_response['Items'][0]['version'])
-    unix_timestamp = datetime.datetime.now().strftime('%s')
-    update_response = version_table.update_item(
-            Key = 
-            {
-                'content_id': content_id,
-                'version' : current_version
-            },
-            UpdateExpression='SET updated_at = :val1, structure = :val2',
-            ExpressionAttributeValues={
-                ':val1': unix_timestamp,
-                ':val2': structure_json
+
+    # Setting Sigv4
+    uri = os.environ.get('AWS_CONTAINER_CREDENTIALS_RELATIVE_URI')
+    credential = ContainerMetadataFetcher().retrieve_uri(uri)
+    access_key_id = credential.get('AccessKeyId')
+    secret_access_key = credential.get('SecretAccessKey')
+    session_token = credential.get('Token')
+    auth = AWS4Auth(access_key_id, secret_access_key, region, 'appsync', session_token=session_token)
+
+    # Load previous version
+    body = {"query":""""
+                    query ListContentMetaDatas{	
+                    listContentMetaDatas(
+                            contentId: "%s",
+                            limit: 1,
+                            sortDirection: DESC
+                    ) {
+                            items{
+                        contentId
+                        version
+                        }
+                    } 
+                    }
+                    """%workshop_name
             }
-        )
+            
+    body_json = json.dumps(body)
+    method = 'POST'
+    headers = {}
+    response = requests.request(method, gql_endpoint, auth=auth, data=body_json, headers=headers)
+    gql_data = json.loads(response.content.decode('utf-8'))['data']['listContentMetaDatas']['items'][0]
+    current_version = gql_data['version']
+    
+    # Send latest version
+    body = {"query":""""
+                mutation createContentRecord{
+                createContentMetaData(input:{
+                    contentId: "%s"
+                    version: %d
+                    workshopName: "%s",
+                    structure: "%s"
+                }){
+                    version
+                }
+                }
+                """% (content_id, current_version,workshop_name,structure_json)
+        }
+    body_json = json.dumps(body)
+    response = requests.request(method, gql_endpoint, auth=auth, data=body_json, headers=headers)
+
+
+    # # Send structure data to DynamoDB Table
+    # print('Start to send structure data\n')
+    # query_response = version_table.query(
+    #     KeyConditionExpression=Key('content_id').eq(content_id),
+    #     ScanIndexForward = False,
+    #     Limit = 1 
+    #     )
+    # # Current version is already updated in pre_build.py 
+    # current_version = int(query_response['Items'][0]['version'])
+    # unix_timestamp = datetime.datetime.now().strftime('%s')
+    # update_response = version_table.update_item(
+    #         Key = 
+    #         {
+    #             'content_id': content_id,
+    #             'version' : current_version
+    #         },
+    #         UpdateExpression='SET updated_at = :val1, structure = :val2',
+    #         ExpressionAttributeValues={
+    #             ':val1': unix_timestamp,
+    #             ':val2': structure_json
+    #         }
+    #     )
     print('Finished sending sructure\n')
 
     print('Post build phase done\n')
