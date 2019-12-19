@@ -62,12 +62,12 @@ def main():
     body = {"query":""""
                     query ListContentMetaDatas{	
                     listContentMetaDatas(
-                            contentId: "%s",
+                            hostName: "%s",
                             limit: 1,
                             sortDirection: DESC
                     ) {
                             items{
-                        contentId
+                        hostName
                         version
                         }
                     } 
@@ -86,7 +86,7 @@ def main():
     body = {"query":""""
             mutation createContentRecord{
             createContentMetaData(input:{
-                contentId: "%s"
+                hostName: "%s"
                 version: %d
                 workshopName: "%s",
                 structures: %s
