@@ -26,20 +26,29 @@ def main():
     gql_endpoint = os.environ['GQL_ENDPOINT']
     # for now content handle only workshop, in future will be added delivery 
     content_id = workshop_name
-    
-    content_structures = {}
+    content_structures = []
+
+
     # Analize languages in toml file
     dict_toml = toml.load(open('./config.toml'))
     number_of_languages = len(dict_toml['Languages']) - 1
     for i,lang in enumerate(dict_toml['Languages']):
-
         print('Load JSON structure\n')
         with open("./public/" + lang +"/index.json", 'r') as j:
             current_structure = json.load(j)
         print('Finished Load JSON\n')
-        content_structures.update({lang:current_structure})
-    structure_json = json.loads(str(content_structures).replace("\'", "\""))
+        content_structures.append({"language": lang, "structure": current_structure})
 
+
+    # Change json format from Python to Javascript because GraphQL can only recognize Javascript type of Json object.
+    # Javascript Json object {key: "value"} ; Python Json object {"key":"value"}
+    # TODO: Json_keys is just hardcoded. It should find keys in JSON object.
+    json_keys = ["language", "structure", "pageTitle", "relativePagePath"]
+    structures_str = str(content_structures)
+    for key in json_keys:
+        target_key = "\'"+key+"\'"
+        structures_str = structures_str.replace(target_key, key)
+    structures_str = structures_str.replace("\'", "\"")
 
     # Setting Sigv4
     uri = os.environ.get('AWS_CONTAINER_CREDENTIALS_RELATIVE_URI')
@@ -49,7 +58,7 @@ def main():
     session_token = credential.get('Token')
     auth = AWS4Auth(access_key_id, secret_access_key, region, 'appsync', session_token=session_token)
 
-    # Load previous version
+    # Load latest version
     body = {"query":""""
                     query ListContentMetaDatas{	
                     listContentMetaDatas(
@@ -75,18 +84,18 @@ def main():
     
     # Send latest version
     body = {"query":""""
-                mutation createContentRecord{
-                createContentMetaData(input:{
-                    contentId: "%s"
-                    version: %d
-                    workshopName: "%s",
-                    structure: "%s"
-                }){
-                    version
-                }
-                }
-                """% (content_id, current_version,workshop_name,structure_json)
-        }
+            mutation createContentRecord{
+            createContentMetaData(input:{
+                contentId: "%s"
+                version: %d
+                workshopName: "%s",
+                structures: %s
+            }){
+                version
+            }
+            }
+            """% (content_id, current_version,workshop_name,structures_str)
+    }
     body_json = json.dumps(body)
     response = requests.request(method, gql_endpoint, auth=auth, data=body_json, headers=headers)
 
