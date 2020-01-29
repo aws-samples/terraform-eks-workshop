@@ -18,21 +18,32 @@ def main():
     cognito_pool_id = os.environ['RT_COGNITO']
     #version_table_name = os.environ['VERSION_TABLE']
     gql_endpoint = os.environ['GQL_ENDPOINT']
+    gql_assume_role = os.environ['GQL_ROLE']
     # for now content handle only workshop, in future will be added delivery 
     content_id = workshop_name
 
-    # Setting Sigv4
-    uri = os.environ.get('AWS_CONTAINER_CREDENTIALS_RELATIVE_URI')
-    credential = ContainerMetadataFetcher().retrieve_uri(uri)
-    access_key_id = credential.get('AccessKeyId')
-    secret_access_key = credential.get('SecretAccessKey')
-    session_token = credential.get('Token')
+    # AssumeRole
+    sts_client=boto3.client('sts')
+    assume_role=sts_client.assume_role(
+        RoleArn=gql_assume_role,
+        RoleSessionName='GraphQLExecuter'
+        )
+    access_key_id=assume_role['Credentials']['AccessKeyId']
+    secret_access_key=assume_role['Credentials']['SecretAccessKey']
+    session_token = assume_role['Credentials']['SessionToken']
+
+    # # Setting Sigv4
+    # uri = os.environ.get('AWS_CONTAINER_CREDENTIALS_RELATIVE_URI')
+    # credential = ContainerMetadataFetcher().retrieve_uri(uri)
+    # access_key_id = credential.get('AccessKeyId')
+    # secret_access_key = credential.get('SecretAccessKey')
+    # session_token = credential.get('Token')
     auth = AWS4Auth(access_key_id, secret_access_key, region, 'appsync', session_token=session_token)
     
     # Load previous version
     body = {"query":""""
-                    query ListContentMetaDatas{	
-                    listContentMetaDatas(
+                    query ListContents{	
+                    listContents(
                             hostName: "%s",
                             limit: 1,
                             sortDirection: DESC
@@ -52,7 +63,7 @@ def main():
     response = requests.request(method, gql_endpoint, auth=auth, data=body_json, headers=headers)
     print(response.content.decode('utf-8'))
     try :
-        gql_data = json.loads(response.content.decode('utf-8'))['data']['listContentMetaDatas']['items'][0]
+        gql_data = json.loads(response.content.decode('utf-8'))['data']['listContents']['items'][0]
         previous_version = gql_data['version']
         current_version = previous_version + 1
     except:
@@ -60,16 +71,15 @@ def main():
     
     # Send latest version
     body = {"query":""""
-                mutation createContentRecord{
-                createContentMetaData(input:{
+                mutation CreateContent{
+                createContent(input:{
                     hostName: "%s"
                     version: %d
-                    workshopName: "%s"
                 }){
                     version
                 }
                 }
-                """% (content_id, current_version,workshop_name)
+                """% (content_id, current_version)
         }
     body_json = json.dumps(body)
     response = requests.request(method, gql_endpoint, auth=auth, data=body_json, headers=headers)
@@ -146,5 +156,6 @@ if __name__ == "__main__":
         os.environ['RT_KINESIS'] = 'your_kinesisstream_name'
         os.environ['RT_COGNITO'] = 'your_cognito_pool_id'
         os.environ['WORKSHOP_NAME'] = 'test'
-        os.environ['GQL_ENDPOINT'] = 'https://zc3sw4gkufd65o7dspnfeferhu.appsync-api.us-east-1.amazonaws.com/graphql'
+        os.environ['GQL_ENDPOINT'] = 'testEndpoint'
+        os.environ['GQL_ROLE'] = 'testARN'
     main()

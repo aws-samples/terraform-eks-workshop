@@ -20,10 +20,8 @@ def main():
     # Setup environment
     region = os.environ['RT_REGION']
     workshop_name = os.environ['WORKSHOP_NAME']
-    version_table_name = os.environ['VERSION_TABLE']
-    dynamodb = boto3.resource('dynamodb')
-    #version_table = dynamodb.Table(version_table_name)
     gql_endpoint = os.environ['GQL_ENDPOINT']
+    gql_assume_role = os.environ['GQL_ROLE']
     # for now content handle only workshop, in future will be added delivery 
     content_id = workshop_name
     content_structures = []
@@ -31,10 +29,14 @@ def main():
 
     # Analize languages in toml file
     dict_toml = toml.load(open('./config.toml'))
-    number_of_languages = len(dict_toml['Languages']) - 1
-    for i,lang in enumerate(dict_toml['Languages']):
+    number_of_languages = len(dict_toml['Languages'])
+    for i, lang in enumerate(dict_toml['Languages']):
         print('Load JSON structure\n')
-        with open("./public/" + lang +"/index.json", 'r') as j:
+        if number_of_languages == 1:
+            index_location = "./public/index.json"
+        else:
+            index_location = "./public/" + lang +"/index.json"
+        with open(index_location, 'r') as j:
             current_structure = json.load(j)
         print('Finished Load JSON\n')
         content_structures.append({"language": lang, "structure": current_structure})
@@ -50,18 +52,31 @@ def main():
         structures_str = structures_str.replace(target_key, key)
     structures_str = structures_str.replace("\'", "\"")
 
-    # Setting Sigv4
-    uri = os.environ.get('AWS_CONTAINER_CREDENTIALS_RELATIVE_URI')
-    credential = ContainerMetadataFetcher().retrieve_uri(uri)
-    access_key_id = credential.get('AccessKeyId')
-    secret_access_key = credential.get('SecretAccessKey')
-    session_token = credential.get('Token')
+
+    # AssumeRole
+    sts_client=boto3.client('sts')
+    assume_role=sts_client.assume_role(
+        RoleArn=gql_assume_role,
+        RoleSessionName='GraphQLExecuter'
+        )
+    access_key_id=assume_role['Credentials']['AccessKeyId']
+    secret_access_key=assume_role['Credentials']['SecretAccessKey']
+    session_token = assume_role['Credentials']['SessionToken']
+    
+    # # Setting Sigv4
+    # uri = os.environ.get('AWS_CONTAINER_CREDENTIALS_RELATIVE_URI')
+    # credential = ContainerMetadataFetcher().retrieve_uri(uri)
+    # access_key_id = credential.get('AccessKeyId')
+    # secret_access_key = credential.get('SecretAccessKey')
+    # session_token = credential.get('Token')
+
+    
     auth = AWS4Auth(access_key_id, secret_access_key, region, 'appsync', session_token=session_token)
 
     # Load latest version
     body = {"query":""""
-                    query ListContentMetaDatas{	
-                    listContentMetaDatas(
+                    query ListContents{	
+                    listContents(
                             hostName: "%s",
                             limit: 1,
                             sortDirection: DESC
@@ -79,22 +94,22 @@ def main():
     method = 'POST'
     headers = {}
     response = requests.request(method, gql_endpoint, auth=auth, data=body_json, headers=headers)
-    gql_data = json.loads(response.content.decode('utf-8'))['data']['listContentMetaDatas']['items'][0]
+    print(response.content.decode('utf-8'))
+    gql_data = json.loads(response.content.decode('utf-8'))['data']['listContents']['items'][0]
     current_version = gql_data['version']
     
     # Send latest version
     body = {"query":""""
-            mutation createContentRecord{
-            createContentMetaData(input:{
+            mutation createContent{
+            createContent(input:{
                 hostName: "%s"
                 version: %d
-                workshopName: "%s",
                 structures: %s
             }){
                 version
             }
             }
-            """% (content_id, current_version,workshop_name,structures_str)
+            """% (content_id, current_version,structures_str)
     }
     body_json = json.dumps(body)
     response = requests.request(method, gql_endpoint, auth=auth, data=body_json, headers=headers)
@@ -130,7 +145,8 @@ if __name__ == "__main__":
     debug = False
     if debug:
         logger.setLevel(logging.DEBUG)
-        os.environ['WORKSHOP_NAME'] = 'your_content_id'
-        os.environ['VERSION_TABLE'] = 'test_content_meta_table'
-            
+        os.environ['WORKSHOP_NAME'] = 'testName'
+        os.environ['RT_REGION'] = 'us-east-1'
+        os.environ['GQL_ENDPOINT'] = 'testEndpoint'
+        os.environ['GQL_ROLE'] = 'testRole'
     main()
