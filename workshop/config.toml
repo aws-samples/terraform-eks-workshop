@@ -33,6 +33,12 @@ home = [ "HTML", "RSS", "JSON"]
 plainIDAnchors = true
 hrefTargetBlank = true
 
+[markup]
+  defaultMarkdownHandler = "goldmark"
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
 [Languages]
 [Languages.en]
 title = "My AWS Workshop"
