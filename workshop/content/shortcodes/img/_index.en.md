@@ -17,4 +17,4 @@ This shortcode takes two parameters:
 {{%/* img "chapter.en.png" "A Chapter" */%}}
 ```
 
-{{% img "chapter.en.png" "A Chapter" %}}
+![Chapter Image](/images/chapter.en.png)

@@ -9,7 +9,7 @@ phases:
       - echo Entered the install phase...
       - apt-get -qq update && apt-get -qq install curl
       - apt-get -qq install asciidoctor
-      - curl -s -L https://github.com/gohugoio/hugo/releases/download/v0.55.6/hugo_0.55.6_Linux-64bit.deb -o hugo.deb
+      - curl -s -L https://github.com/gohugoio/hugo/releases/download/v0.64.1/hugo_0.64.1_Linux-64bit.deb -o hugo.deb
       - dpkg -i hugo.deb
     finally:
       - echo Installation done

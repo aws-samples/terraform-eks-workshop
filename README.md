@@ -1,6 +1,6 @@
-# workshop-sample
+# Aws-workshop-template
 
-This project allows you to scaffold a workshop using a AWS-styled Hugo theme similar to those available at [cdkworkshop.com](https://cdkworkshop.com/), [eksworkshop.com](https://eksworkshop.com/), or [ecsworkshop.com](https://ecsworkshop.com/).
+This project allows you to scaffold a workshop using a AWS-styled Hugo theme similar to those available at [lunar-lander.workshop.aws](https://lunar-lander.workshop.aws/), and [eksworkshop.com](https://eksworkshop.com/)
 
 ```bash
 .
@@ -12,7 +12,7 @@ This project allows you to scaffold a workshop using a AWS-styled Hugo theme sim
 │   ├── policies                      <-- Directory for workshop modules IAM Roles and Policies
 │   └── templates                     <-- Directory for workshop modules CloudFormation templates
 └── workshop                          
-    ├── buildspec.yml                 <-- AWS CodeBuild build script for building the workshop website
+    ├── buildspec.yml                 <-- AWS CodeBuild build script for building the workshop website (Note this is being deprecated in favour of automated builds within the workshops.aws platform. You shouldn\'t need to touch this file)
     ├── config.toml                   <-- Hugo configuration file for the workshop website
     └── content                       <-- Markdown files for pages/steps in workshop
     └── static                        <-- Any static assets to be hosted alongside the workshop (ie. images, scripts, documents, etc)
@@ -24,13 +24,6 @@ This project allows you to scaffold a workshop using a AWS-styled Hugo theme sim
 1. [Clone this repository](https://help.github.com/articles/fork-a-repo/).
 2. [Install Hugo locally](https://gohugo.io/overview/quickstart/).
 
-## Create your project
-
-If you haven't already, make a copy of this entire directory and rename it something descriptive, similar to the title of your workshop.
-
-```bash
-cp -R Aws-workshop-template/ my-first-worshop/
-```
 
 ## What's Included
 
@@ -103,7 +96,11 @@ hugo server
 
 ## Things to be aware of:
 
-* Please ensure you remove the links to "Event Outfitters" from the bottom of the front page before you publish your workshop.
+* Remove the links to "Event Outfitters" from the bottom of the front page before you publish your workshop.
+* Update the config.toml with your workshop name - the default is at the top, and also under the section [Languages.en]
+```
+title = "My AWS Workshop"
+```
 * The template includes two sample languages, French and English (eg "_index.en.md" and "_index.fr.md"). Please don't move everything to "_index.md" as other people may want to translate your workshop in future!
 * However, you should remove the example French language selection from the config.toml unless you plan to provide a French translation. Delete the following lines:
 ```
