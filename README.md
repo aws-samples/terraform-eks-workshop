@@ -29,8 +29,8 @@ This project allows you to scaffold a workshop using a AWS-styled Hugo theme sim
 
 This project the following folders:
 
-* `deck`: The location to store your presentation materials, if not already stored centrally in a system like KnowledgeMine or Wisdom.
-* `resources`: Store any example code, IAM policies, or Cloudformation templates needed by your workshop here.
+* `deck`: **UNUSED RIGHT NOW** Future location to store your presentation materials. For now, you should store them centrally in a system like KnowledgeMine or Wisdom. 
+* `resources`:  **UNUSED RIGHT NOW** Store any example code, IAM policies, or Cloudformation templates needed by your workshop here.
 * `workshop`: This is the core workshop folder. This is generated as HTML and hosted for presentation for customers.
 
 
