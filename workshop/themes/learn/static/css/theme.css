@@ -70,7 +70,7 @@ pre {
     border: 1px solid #eaeaea;
 }
 b, strong, label, th {
-    font-weight: 600;
+    font-weight: 400;
 }
 .default-animation, #header #logo-svg, #header #logo-svg path, #sidebar, #sidebar ul, #body, #body .padding, #body .nav {
     -webkit-transition: all 0.5s ease;
@@ -436,7 +436,7 @@ textarea:focus, input[type="email"]:focus, input[type="number"]:focus, input[typ
     border-bottom: 4px solid #F0F2F4;
 }
 #chapter p {
-    text-align: center;
+    text-align: justify;
     font-size: 1.2rem;
 }
 #footer {

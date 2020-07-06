@@ -36,6 +36,14 @@
     font-weight: 200;
 }
 
+@font-face {
+    font-family: 'Amazon Ember';
+    src: url("https://fonts.workshops.aws/webfonts/AmazonEmber_W_Bd.eot");
+    src: url("https://fonts.workshops.aws/webfonts/AmazonEmber_W_Bd.eot?#iefix") format("embedded-opentype"), url("https://fonts.workshops.aws/webfonts/AmazonEmber_W_Bd.woff2") format("woff2"), url("https://fonts.workshops.aws/webfonts/AmazonEmber_W_Lt.woff") format("woff");
+    font-style: bold;
+    font-weight: 400;
+}
+
 body {
     font-family: "Amazon Ember", "Work Sans", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
     color: var(--MAIN-TEXT-color) !important;
