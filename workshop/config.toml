@@ -14,7 +14,6 @@ pygmentsCodeFences = true
 pygmentsStyle = "monokai"
 
 [params]
-  editURL = "https://code.amazon.com/packages/Aws-workshop-template/blobs/master/--/workshop/content/"
   description = "My AWS Workshop"
   author = "Jane Architect"
   disableBreadcrumb = false
