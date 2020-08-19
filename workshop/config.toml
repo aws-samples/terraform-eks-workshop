@@ -28,10 +28,6 @@ pygmentsStyle = "monokai"
 [outputs]
 home = [ "HTML", "RSS", "JSON"]
 
-[blackfriday]
-plainIDAnchors = true
-hrefTargetBlank = true
-
 [markup]
   defaultMarkdownHandler = "goldmark"
   [markup.goldmark]
