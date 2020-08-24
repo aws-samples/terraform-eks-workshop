@@ -2,6 +2,15 @@
 
 This project allows you to scaffold a workshop using a AWS-styled Hugo theme similar to those available at [lunar-lander.workshop.aws](https://lunar-lander.workshop.aws/), and [eksworkshop.com](https://eksworkshop.com/)
 
+## Important note on workshop creation, review, and hosting
+
+All workshops should be submitted to the [Tech Content 2.0 process](https://w.amazon.com/bin/view/AWS_Technical_Content/aws-tech-content-sim-dashboard/content-creation-plan/#H2.ReviewDomainPortals). This enables centralised tracking and review of content. Once your content has been reviewed, you can host your workshop using the workshop.aws pulbication and hosting mechanism. The Tech Content team will help submit the tickets for hosting and publication.
+
+You should not host a workshop under your own domain, nor should you host workshops in AWS accounts marked as 'invidivual use' - these actions can result in Sev2 security incidents.
+
+
+## Repo structure
+
 ```bash
 .
 ├── metadata.yml                      <-- Metadata file with descriptive information about the workshop
@@ -19,12 +28,6 @@ This project allows you to scaffold a workshop using a AWS-styled Hugo theme sim
     └── themes                        <-- AWS Style Hugo Theme (Do not edit!)
 ```
 
-## Requirements
-
-1. [Clone this repository](https://help.github.com/articles/fork-a-repo/).
-2. [Install Hugo locally](https://gohugo.io/overview/quickstart/).
-
-
 ## What's Included
 
 This project the following folders:
@@ -33,6 +36,14 @@ This project the following folders:
 * `resources`:  **UNUSED RIGHT NOW** Store any example code, IAM policies, or Cloudformation templates needed by your workshop here.
 * `workshop`: This is the core workshop folder. This is generated as HTML and hosted for presentation for customers.
 
+
+## Requirements
+
+1. [Clone this repository](https://help.github.com/articles/fork-a-repo/).
+2. [Install Hugo locally](https://gohugo.io/overview/quickstart/). As of 1 Mar 2020, the workshop.aws build process uses [Hugo 0.64.1](https://github.com/gohugoio/hugo/releases/tag/v0.64.1)
+
+
+# Getting Started
 
 ## Navigate to the `workshop` directory
 
