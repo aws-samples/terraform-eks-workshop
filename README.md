@@ -2,7 +2,8 @@
 
 This project allows you to scaffold a workshop using a AWS-styled Hugo theme similar to those available at [lunar-lander.workshop.aws](https://lunar-lander.workshop.aws/), and [eksworkshop.com](https://eksworkshop.com/)
 
-## <span style="color:red">Important note on workshop creation, review, and hosting</span>.
+
+## Important note on workshop creation, review, and hosting
 
 All workshops should be submitted to the [Tech Content 2.0 process](https://w.amazon.com/bin/view/AWS_Technical_Content/aws-tech-content-sim-dashboard/content-creation-plan/#H2.ReviewDomainPortals). This enables centralised tracking and review of content. Once your content has been reviewed, you can host your workshop using the workshop.aws pulbication and hosting mechanism. The Tech Content team will help submit the tickets for hosting and publication.
 
