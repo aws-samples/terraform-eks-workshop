@@ -22,7 +22,6 @@ You should not host a workshop under your own domain, nor should you host worksh
 │   ├── policies                      <-- Directory for workshop modules IAM Roles and Policies
 │   └── templates                     <-- Directory for workshop modules CloudFormation templates
 └── workshop                          
-    ├── buildspec.yml                 <-- AWS CodeBuild build script for building the workshop website (Note this is being deprecated in favour of automated builds within the workshops.aws platform. You shouldn\'t need to touch this file)
     ├── config.toml                   <-- Hugo configuration file for the workshop website
     └── content                       <-- Markdown files for pages/steps in workshop
     └── static                        <-- Any static assets to be hosted alongside the workshop (ie. images, scripts, documents, etc)
