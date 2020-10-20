@@ -15,7 +15,7 @@ pygmentsStyle = "monokai"
 
 [params]
   description = "My AWS Workshop"
-  author = "Jane Architect"
+  author = "Amazon AWS"
   disableBreadcrumb = false
   disableNextPrev = false
   themeVariant = "aws"
@@ -27,6 +27,14 @@ pygmentsStyle = "monokai"
 
 [outputs]
 home = [ "HTML", "RSS", "JSON"]
+
+[privacy.youtube]
+    disable = false
+    privacyEnhanced = true
+[privacy.twitter]
+    disable = false
+    enableDNT = true
+    simple = true
 
 [markup]
   defaultMarkdownHandler = "goldmark"
