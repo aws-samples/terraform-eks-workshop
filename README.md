@@ -40,7 +40,7 @@ This project the following folders:
 ## Requirements
 
 1. [Clone this repository](https://help.github.com/articles/fork-a-repo/).
-2. [Install Hugo locally](https://gohugo.io/overview/quickstart/). As of 1 Mar 2020, the workshop.aws build process uses [Hugo 0.64.1](https://github.com/gohugoio/hugo/releases/tag/v0.64.1)
+2. [Install Hugo locally](https://gohugo.io/overview/quickstart/). As of 1 Mar 2020, the workshop.aws build process uses [Hugo 0.74.3](https://github.com/gohugoio/hugo/releases/tag/v0.74.3)
 
 
 # Getting Started
