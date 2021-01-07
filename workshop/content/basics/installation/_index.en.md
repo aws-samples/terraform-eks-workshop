@@ -60,7 +60,7 @@ hugo new intro/first-content.md
 hugo new intro/second-content/_index.md
 ```
 
-Feel free to edit thoses files by adding some sample content and replacing the `title` value in the beginning of the files. 
+Feel free to edit those files by adding some sample content and replacing the `title` value in the beginning of the files. 
 
 ## Launching the website locally
 
