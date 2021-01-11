@@ -1,13 +1,20 @@
 # Aws-workshop-template
 
-This project allows you to scaffold a workshop using a AWS-styled Hugo theme similar to those available at [lunar-lander.workshop.aws](https://lunar-lander.workshop.aws/), and [eksworkshop.com](https://eksworkshop.com/)
+This repo provides the templating to make it easy to create a workshop similar to those available at [net-immersionday.workshop.aws](https://net-immersionday.workshop.aws/), and [eksworkshop.com](https://eksworkshop.com/)
 
 
-## Important note on workshop creation, review, and hosting
+## 2021 update on Workshop Reviews, hosting, and discovery
 
-All workshops should be submitted to the [Tech Content 2.0 process](https://w.amazon.com/bin/view/AWS_Technical_Content/aws-tech-content-sim-dashboard/content-creation-plan/#H2.ReviewDomainPortals). This enables centralised tracking and review of content. Once your Tech Content review is complete, you can host your workshop using the workshop.aws publication+hosting mechanism. The Tech Content team will submit the tickets for hosting and publication.
+All AWS Workshops should use this template, and should be published using the workshops.aws publising system. For more details, see here: [https://w.amazon.com/bin/view/AWS/Teams/SA/Customer_Engagements/workshops](https://w.amazon.com/bin/view/AWS/Teams/SA/Customer_Engagements/workshops). In summary:
+* Prior to 2021, workshops went through the Tech Content 2.0 process. In 2021 this is changing to use a new **Workshop Review** process.  You no longer need to register your workshop via the Tech Content 2.0 process.
+* Workshops are hosted under *.workshop.aws domains. We will provide you with a CodeCommit repo and provide an automated build and publication pipeline.
+* Once you've written your content, get someone to review your workshop with the Workshop Review document (included in this repo).
+* Submit a SIM ticket to onboard your workshop to under *.workshop.aws.
+* This will also add your workshop to the catalog at [https://internal.workshops.aws](https://internal.workshops.aws) and [https://www.workshops.aws](https://www.workshops.aws)
 
-You should not host a workshop under your own domain, nor should you host workshops in AWS accounts marked as 'invidivual use' - these actions can result in Sev2 security incidents.
+
+## Security and regulatory compliance
+Historically, SAs and others have created and hosted workshops in their own AWS accounts, Github, S3 buckets, Word documents, and other places. This makes it hard to discover workshops, hard to find the owner to collaborate on improvements, and hard to ensure workshops meet our quality and compliance bar. The SA Customer Engagements team has created the workshop.aws system to host workshops under the workshop.aws domain. By using this template and the workshop.aws publishing system, you can ensure your workshop is secure, discoverable, high quality, and does not expose Amazon to legal or policy concerns. (all issues we have seen with self-published workshops).
 
 
 ## Repo structure
@@ -16,8 +23,9 @@ You should not host a workshop under your own domain, nor should you host worksh
 .
 ├── metadata.yml                      <-- Metadata file with descriptive information about the workshop
 ├── README.md                         <-- This instructions file
-├── deck                              <-- Directory for presentation deck
-├── resources                         <-- Directory for workshop resources
+├── Workshop Review document.docx     <-- Workshop Review document to be completed before your workshop is published
+├── deck                              <-- Directory for presentation deck (Future use)
+├── resources                         <-- Directory for workshop resources (Future use)
 │   ├── code                          <-- Directory for workshop modules code
 │   ├── policies                      <-- Directory for workshop modules IAM Roles and Policies
 │   └── templates                     <-- Directory for workshop modules CloudFormation templates
@@ -30,17 +38,18 @@ You should not host a workshop under your own domain, nor should you host worksh
 
 ## What's Included
 
-This project the following folders:
+This project includes the following folders:
 
+* `workshop`: This is the core workshop folder. This is generated as HTML and hosted for presentation for customers.
+* `Workshop Review document`: This is the current Workshop Review document. All workshops need to be reviewed by someone other than the author, before they can be published.
 * `deck`: **UNUSED RIGHT NOW** Future location to store your presentation materials. For now, you should store them centrally in a system like KnowledgeMine or Wisdom. 
 * `resources`:  **UNUSED RIGHT NOW** Store any example code, IAM policies, or Cloudformation templates needed by your workshop here.
-* `workshop`: This is the core workshop folder. This is generated as HTML and hosted for presentation for customers.
 
 
 ## Requirements
 
 1. [Clone this repository](https://help.github.com/articles/fork-a-repo/).
-2. [Install Hugo locally](https://gohugo.io/overview/quickstart/). As of 1 Aug 2020, the workshop.aws build process uses [Hugo 0.74.3](https://github.com/gohugoio/hugo/releases/tag/v0.74.3)
+2. Install[Hugo](https://gohugo.io/overview/quickstart/) on your laptop. As of 1 Aug 2020, the workshop.aws build process uses [Hugo 0.74.3](https://github.com/gohugoio/hugo/releases/tag/v0.74.3) so you should probably use that version.
 
 
 # Getting Started
@@ -50,60 +59,25 @@ This project the following folders:
 All command line directions in this documentation assume you are in the `workshop` directory. Navigate there now, if you aren't there already.
 
 ```bash
-cd my-first-workshop/workshop
+cd Aws-workshop-template/workshop
 ```
 
-## Create your first chapter page
+## Launching the website locally, and follow the tutorial
 
-Chapters are pages that contain other child pages. It has a special layout style and usually just contains a _brief abstract_ of the section.
-
-```markdown
-Discover what this template is all about and the core concepts behind it.
-```
-
-This template provides archetypes to create skeletons for your workshop. Begin by creating your first chapter page with the following command
+Run the following command to get Hugo to build the template and run it locally using its in-built server:
 
 ```bash
-cd workshop
-hugo new --kind chapter intro/_index.en.md
-```
-
-By opening the given file, you should see the property `chapter=true` on top, meaning this page is a _chapter_.
-
-By default all chapters and pages are created as a draft. If you want to render these pages, remove the property `draft = true` from the metadata.
-
-## Create your first content pages
-
-Then, create content pages inside the previously created chapter. Here are two ways to create content in the chapter:
-
-```bash
-hugo new intro/first-content.en.md
-hugo new intro/second-content/_index.en.md
-```
-
-Feel free to edit those files by adding some sample content and replacing the `title` value in the beginning of the files. 
-
-## Launching the website locally
-
-Launch by using the following command:
-
-```bash
-hugo serve
+hugo server
 ```
 
 Go to `http://localhost:1313`
 
 You should notice three things:
 
-1. You have a left-side **Intro** menu, containing two submenus with names equal to the `title` properties in the previously created files.
+1. You have a left-side **Intro** menu, containing menu items that match the directory structure in the "workshop" directory.
 2. The home page explains how to customize it by following the instructions.
 3. When you run `hugo server`, when the contents of the files change, the page automatically refreshes with the changes. Neat!
 
-Alternatively, you can run the following command in a terminal window to tell Hugo to automatically rebuild whenever a file is changed. This can be helpful when rapidly iterating over content changes.
-
-```bash
-hugo server
-```
 
 ## Things to be aware of:
 
@@ -112,8 +86,7 @@ hugo server
 ```
 title = "My AWS Workshop"
 ```
-* The template includes two sample languages, French and English (eg "_index.en.md" and "_index.fr.md"). Please don't move everything to "_index.md" as other people may want to translate your workshop in future!
-* However, you should remove the example French language selection from the config.toml unless you plan to provide a French translation. Delete the following lines:
+* The template includes two sample languages, French and English (eg "_index.en.md" and "_index.fr.md"). Remove the example French language selection from the **config.toml** unless you plan to provide a French-language version of your content. Delete the following lines:
 ```
 [Languages.fr]
 title = "Mon atelier AWS"
