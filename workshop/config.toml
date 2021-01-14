@@ -3,7 +3,7 @@ CanonifyURLs=true
 languageCode = "en-US"
 defaultContentLanguage = "en"
 
-title = "My AWS Workshop"
+title = "Terraform EKS Workshop"
 theme = "learn"
 metaDataFormat = "yaml"
 defaultContentLanguageInSubdir= true
@@ -14,7 +14,7 @@ pygmentsCodeFences = true
 pygmentsStyle = "monokai"
 
 [params]
-  description = "My AWS Workshop"
+  description = "Terraform EKS Workshop"
   author = "Amazon AWS"
   disableBreadcrumb = false
   disableNextPrev = false
@@ -44,11 +44,6 @@ home = [ "HTML", "RSS", "JSON"]
 
 [Languages]
 [Languages.en]
-title = "My AWS Workshop"
+title = "Terraform EKS Workshop"
 weight = 1
 languageName = "English"
-
-[Languages.fr]
-title = "Mon atelier AWS"
-weight = 2
-languageName = "Français"

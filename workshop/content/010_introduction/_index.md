@@ -1,5 +1,5 @@
 ---
-title: "Introduction"
+title: "Introduction to Kubernetes"
 weight: 10
 chapter: true
 draft: false
@@ -7,7 +7,6 @@ pre: <i class='fa fa-road'></i>
 tags:
 ---
 
-# Introduction to Kubernetes
 
 A walkthrough of basic Kubernetes concepts.
 
