@@ -10,7 +10,7 @@ Diagram of the components, with the EKS cluster parts we are creating highlighte
 
 ![tf-state](/images/andyt/cluster-build.jpg)
 
-## Terraform files and explanation
+### Terraform files and explanation
 
 ### backend-cluster.tf, vars-dynamodb.tf, vars-main.tf, remote-net.tf & remote-iam.tf
 

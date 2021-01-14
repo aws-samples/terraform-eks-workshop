@@ -4,11 +4,10 @@ date: 2018-09-18T16:01:14-05:00
 weight: 533
 ---
 
-### Setting up the VPC, Subnets, Routing, Security Groups and VPC Endpoints
 
-From Cloud9 IDE we will next build the main networking components for our EKS cluster 
+From the Cloud9 IDE we will next build the main networking components for our EKS cluster
 
-
+This diagram shows the EKS VPC and CI/CD VPC we will build in this section: 
 ![tf-state](/images/andyt/net-1.jpg)
 
 

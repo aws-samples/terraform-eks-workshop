@@ -4,7 +4,7 @@ date: 2018-09-18T16:01:14-05:00
 weight: 535
 ---
 
-## Terraform files and explanation
+### Terraform files and explanation
 
 
 The first three files have been pre-created from the gen-backend.sh script in the tf-setup stage, The S3 bucket and DynamoDB tables were also pre-created in the tf-setup stage.
@@ -350,8 +350,7 @@ output "rtb-priv1" {
 
 ---
 
-
-### aws_vpc_endpoint__vpce-xxxxx.tf
+### aws_vpc_endpoint__vpce-xxxxx.tf
 
 
 These files create the necessary VPC endpoints. these are easy to read and understand the most complex one is for the S3 endpoint and it is listed below.
