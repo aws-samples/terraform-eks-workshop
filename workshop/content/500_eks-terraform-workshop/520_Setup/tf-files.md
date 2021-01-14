@@ -4,9 +4,12 @@ date: 2018-09-18T16:01:14-05:00
 weight: 525
 ---
 
-## Terraform files and explanation
+### Diagram of the AWS infrastructure created by Terraform 
 
 ![tf-state](/images/andyt/tf-state-aws.jpg)
+
+---
+
 
 
 ### aws.tf

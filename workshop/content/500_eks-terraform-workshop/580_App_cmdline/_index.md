@@ -7,5 +7,5 @@ tags:
 
 ---
 
-# Start and test the sample application using the command line
+### Start and test the sample application using the command line
 

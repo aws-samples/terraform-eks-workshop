@@ -6,7 +6,7 @@ tags:
   - tfeks
 ---
 
-# Use the CI/CD Pipeline to deploy the sample app 
+### Use the CI/CD Pipeline to deploy the sample app 
 
 [Continuous integration](https://aws.amazon.com/devops/continuous-integration/) (CI) and [continuous delivery](https://aws.amazon.com/devops/continuous-delivery/) (CD)
 are essential for deft organizations. Teams are more productive when they can make discrete changes frequently, release those changes programmatically and deliver updates

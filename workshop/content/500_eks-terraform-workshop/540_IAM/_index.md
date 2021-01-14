@@ -8,7 +8,7 @@ tags:
 
 ---
 
-# Setting up the IAM Roles and Policies for EKS
+### Setting up the IAM Roles and Policies for EKS
 
 In this Chapter, we will use Terraform to add the Roles and Policies EKS needs to operate correctly.
 

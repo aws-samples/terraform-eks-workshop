@@ -1,14 +1,13 @@
 ---
-title: "EKS muiti-part Terraform build"
+title: "EKS multi-part Build with Terraform"
 weight: 515
 draft: false
 ---
 
-## EKS multi-part Build with Terraform
 
 In this workshop we will build a private EKS cluster using Terraform, using our Cloud9 IDE as a bastion host and also create a VPC hosted CI/CD pipeline using CodeCommit, CodeBuild and CodePipeline.
 
-The following diagram pictures the end state for this workshop
+The following diagram pictures the end state for this workshop:
 
 ![tf-state](/images/andyt/master-scenario.png)
 

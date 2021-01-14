@@ -12,6 +12,7 @@ uglyurls = true
 sectionPagesMenu = "main"
 pygmentsCodeFences = true
 pygmentsStyle = "monokai"
+enableEmoji = true
 
 [params]
   description = "Terraform EKS Workshop"

@@ -6,7 +6,7 @@ weight: 41
 ---
 
 
-## Simplified architecture diagram for Part 1
+### Simplified architecture diagram for Part 1
 
 ![ec2-vpc-tgw-vpc-ec2-make-it-ping](/images/andyt/lab0.jpg)
 

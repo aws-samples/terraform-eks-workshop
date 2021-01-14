@@ -8,7 +8,7 @@ tags:
 
 ---
 
-# Setting up the VPC, Subnets, Security Groups and VPC Endpoints
+### Setting up the VPC, Subnets, Security Groups and VPC Endpoints.
 
 
 

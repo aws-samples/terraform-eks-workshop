@@ -9,4 +9,4 @@ disableToc: true
 note: change the url to match the new repo... using old repo as an example placeholder
 --->
 
-Please go to [Contributors page](https://github.com/aws-samples/eks-workshop/graphs/contributors) to checkout authors for this Workshop
+Please go to [Contributors page](https://github.com/aws-samples/terraform-eks-workshop/graphs/contributors) to checkout authors for this Workshop

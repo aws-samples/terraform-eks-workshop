@@ -7,7 +7,6 @@ tags:
   - intermediate
 ---
 
-# Advanced VPC Networking with EKS
 
 
 In this Chapter, we setup some of the advanced VPC networking features with EKS.
