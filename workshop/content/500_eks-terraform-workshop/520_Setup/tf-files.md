@@ -154,12 +154,13 @@ default=7
 
 ---
 
-### dynamodb-tables.tf
+### dynamodb-tables.tf
+
 
 This file specifies that Terraform should create the five dynamoDB tables used to hold the locks for accessing the Terraform state files we wil create later in the S3 bucket, Note the **depends_on** statement to ensure the S3 bucket gets created before the DynamoDB table.
 
 Note how this uses the special terraform "count" capability to create 7x **var.stagecount** different DynamoDB tables.
-Each table's name is constructed by assembling a string **format(** that contains a fixed value **terraform_locks_** and a string value from our string array **%s",var.stages** - idexed by the **[count.index]**     
+Each table's name is constructed by assembling a string **format(** that contains a fixed value **terraform_locks** and a string value from our string array **%s",var.stages** - indexed by the **[count.index]**     
 
 {{%expand "Expand here to see the code" %}}
 ```bash

@@ -16,26 +16,6 @@ As described in previous sections
 ---
 
 
-### aws_ecr_repository__xxxx.tf
-
-These files define privare ECR repositories for the docker images we will use, one example is shown here as they are all similar:
-
-{{%expand "Expand here to see the code" %}}
-```bash
-resource "aws_ecr_repository" "nginx" {
-  name                 = "nginx"
-  image_tag_mutability = "MUTABLE"
-
-  image_scanning_configuration {
-    scan_on_push = true
-  }
-}
-```
-
-{{%/expand%}}
-
----
-
 ## Data resources - Read only references we need to build the infrastructure
 
 ### data-cicdvpc.tf
@@ -282,6 +262,29 @@ resource "aws_codepipeline" "pipe-eksworkshop-app" {
 
 
 ---
+
+### aws_ecr_repository__xxxx.tf
+
+
+These files define privare ECR repositories for the docker images we will use, one example is shown here as they are all similar:
+
+{{%expand "Expand here to see the code" %}}
+```bash
+resource "aws_ecr_repository" "nginx" {
+  name                 = "nginx"
+  image_tag_mutability = "MUTABLE"
+
+  image_scanning_configuration {
+    scan_on_push = true
+  }
+}
+```
+
+{{%/expand%}}
+
+---
+
+
 
 
 ### null-auth-cicd.tf & null-load_ecr.tf

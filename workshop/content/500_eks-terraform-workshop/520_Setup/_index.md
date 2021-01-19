@@ -6,6 +6,6 @@ tags:
 
 ---
 
-### In this part we will create the S3 bucket and DynamoDB tables for Terraform state files & locks.
+### In this chapter we will create the S3 bucket and DynamoDB tables for Terraform state files & locks.
 
 

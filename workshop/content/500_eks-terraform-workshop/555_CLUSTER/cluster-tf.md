@@ -10,7 +10,7 @@ weight: 556
 cd ~/environment/tfekscode/cluster
 ```
 
-Initialze Terraform
+Initialize Terraform:
 
 ```
 terraform init
