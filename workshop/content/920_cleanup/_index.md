@@ -7,6 +7,5 @@ tags:
   - beginner
 ---
 
-# Cleanup
 
-![Cleaned Environment](/images/cleanup.svg)
+Cleanup the workshop resources

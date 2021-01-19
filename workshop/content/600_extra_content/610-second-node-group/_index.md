@@ -6,6 +6,5 @@ tags:
  
 ---
 
-# Build a second managed node group 
 
-In this Chapter, we will use Terraform to build a second worker node group.
+In this Chapter, we will use Terraform to build a second node group.

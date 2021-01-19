@@ -8,10 +8,12 @@ To clean up the resources in your AWS account created by this workshop.
 Run the following commands:
 
 ```
-cd ~/environment/tfekscode/testing
+cd ~/environment/tfekscode/.automation
 ```
 
 run this script which will delete all the resources created by terraform:
+
+**This will take approximately 30 minutes to complete:**
 
 ```
 ./destroy-everything.sh

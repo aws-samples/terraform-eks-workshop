@@ -13,6 +13,8 @@ tags:
 To start the workshop, follow the following instructions ...
 
 
-* ...[attending an AWS hosted event (using AWS provided hashes)](/en/020_prerequisites/aws_event.html)
+* ...[attending an AWS hosted event (using AWS provided hashes)](020_prerequisites/aws_event.html), or
 
-Once you have completed with either setup, continue with [**Open the Workspace**](/en/020_prerequisites/workspace.html)
+* ...[running the workshop on your own (in your own account)](020_prerequisites/self_paced.html)
+
+Once you have completed with either setup, continue with [**Open the Workspace**](020_prerequisites/workspace.html)
