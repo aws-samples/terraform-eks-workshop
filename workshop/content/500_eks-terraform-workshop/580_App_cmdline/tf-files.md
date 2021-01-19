@@ -28,9 +28,7 @@ provider "kubernetes" {}
 
 Define the namespace using Terraform, notice the extended timeout period for deletion **delete = "20m"** to allow ingress resources time to delete.
 
-
-### sampleapp-namespace.tf
-
+### sampleapp-namespace.tf
 
 ```bash
 resource "kubernetes_namespace" "game-2048" {
@@ -64,7 +62,7 @@ There's also a node selector to ensure the app runs on our specific node group
 
 **node_selector = { "alpha.eksctl.io/nodegroup-name" = "ng1-mycluster1" }**
 
-
+{{%expand "Expand here to see the code" %}}
 ```bash
 data "aws_region" "current" {}
 data "aws_caller_identity" "current" {}
@@ -123,14 +121,15 @@ resource "kubernetes_deployment" "game-2048__deployment-2048" {
   }
 }
 ```
-
+{{% /expand %}}
 ---
 
 
-### sampleapp-service.tf
+### sampleapp-service.tf
 
 Define the service:
 
+{{%expand "Expand here to see the code" %}}
 ```bash
 resource "kubernetes_service" "game-2048__service-2048" {
 
@@ -155,15 +154,17 @@ resource "kubernetes_service" "game-2048__service-2048" {
 
 }
 ```
+{{% /expand %}}
 
 ---
 
-### sampleapp-ingress.tf
+### sampleapp-ingress.tf
 
 Define the ingress resource - this creates a AWS Aapplication Load Balancer via the previously installed aws-load-balancer-controller.
 
 Note how multiple annotations are passed, including the listener port 8080.
 
+{{%expand "Expand here to see the code" %}}
 ```bash
 resource "kubernetes_ingress" "game-2048__ingress-2048" {
   metadata {
@@ -188,5 +189,6 @@ resource "kubernetes_ingress" "game-2048__ingress-2048" {
   }
 }
 ```
+{{% /expand %}}
 
 ---

@@ -6,4 +6,3 @@ pre: <i class='fa fa-road'></i>
 tags:
 ---
 
-# Deploy an EKS cluster using Terraform

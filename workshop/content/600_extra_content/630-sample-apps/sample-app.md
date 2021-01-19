@@ -1006,8 +1006,24 @@ Note from the output that:
 * The services are exposing port 80.
 * The deployment is referencing a private ECR repository belonging to your account.
 
----
 
+If you see pods aparently stuck in "ContainerCreating" mode for a minute or more try the following:
+
+
+{{%expand "Expand here to see the fix" %}}
+
+
+```bash
+cd ~/environment/tfekscode/extra/eks-cidr2
+./reannotate-nodes.sh
+kubectl rollout restart deployment deployment1-2048 -n game1-2048
+kubectl rollout restart deployment deployment2-2048 -n game2-2048
+cd ~/environment/tfekscode/extra/sampleapp2
+```
+
+{{% /expand %}}
+
+---
 
 Enable port forwarding so we can see the application in out Cloud9 IDE:
 
@@ -1024,7 +1040,7 @@ Handling connection for 8080
 
 Preview the running (port-forwarded service) application from the cloud 9 IDE"
 
-Preview -> Preview Running Application
+`Preview` -> `Preview Running Application`
 ![tf-state](/images/andyt/game-2048-0.jpg)
 
 You should then see the app running in the browser 

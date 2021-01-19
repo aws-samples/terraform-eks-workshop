@@ -5,7 +5,7 @@ weight: 581
 ---
 
 
-In this challenge you will deploy a sample application using Terraform.
+In this chapter you will deploy a sample application using Terraform.
 
 The biggest benefit when using Terraform to maintain Kubernetes resources is integration into the Terraform plan/apply life-cycle. So you can review planned changes before applying them. 
 
@@ -609,7 +609,7 @@ Handling connection for 8080
 
 Preview the running (port-forwarded service) application from the cloud 9 IDE"
 
-Preview -> Preview Running Application
+`Preview` -> `Preview Running Application`
 ![tf-state](/images/andyt/game-2048-0.jpg)
 
 You should then see the app running in the browser 
@@ -622,7 +622,7 @@ Interrupt the port forwarding with **ctrl-C**
 ---
 
 
-## Finding the Internal Load Balancer
+## Finding the Internal Load Balancer  <a id="load-balancer-find"></a>
 
 As part of the build above we also deployed a Load Balancer.
 
@@ -684,10 +684,10 @@ curl $ALB:8080
 {{< /output >}}
 
 ---
----
 
 
-## Cleanup
+## Cleanup
+
 
 Use terraform to delete our sample application:
 

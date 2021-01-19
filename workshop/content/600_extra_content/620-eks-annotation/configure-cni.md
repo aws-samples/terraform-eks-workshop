@@ -177,7 +177,7 @@ State path: terraform.tfstate
 
 
 
-**Note: there is no need to cycle the nodes (terminate them) in this case as when the node group was created the CNI extension was already in place - so we only need to annotate the nodes**
+**Note: there is no need to cycle the nodes (terminate them) in this case as when the node group was created the CNI extension was already in place - so we only need to annotate the nodes**.
 
 
 
