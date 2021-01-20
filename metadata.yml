@@ -1,25 +1,31 @@
 #name - DNS-friendly name for the workshop. This will be used when generating the hosting URL (ie. https://my-first-workshop.workshops.aws/)
-name: my-first-workshop
+name: terraform-eks-workshop
 #title - The title of your workshop
-title: My First Workshop 
+title: Terraform EKS Workshop 
 #description - A short description that will be displayed in search results
-description: Creating unicorns with serverless bitcoin magic! 
+description: Create a private EKS Cluster using Terraform
 #categories - Refer to official AWS categories covered by the workshop content here
 categories: 
-  - Networking
   - Compute
+  - Developer Tools
+  - Networking & Content Delivery
 #services - Refer to the official AWS service names covered by the workshop content here
 services: 
-   - Api Gateway
-   - Lambda
+   - Amazon Elastic Kubernetes Service
+   - Amazon Elastic Compute Cloud (Amazon EC2)
+   - Amazon Elastic Container Registry (Amazon ECR)
+   - Amazon Virtual Private Cloud (Amazon VPC)
+   - AWS CodeCommit
+   - AWS CodePipeline
+   - AWS CodeBuild
 #level - Approximate skill level needed for this workshop
-level: 100 
+level: 300
 #duration - Estimated duration in minutes
-duration: 60 
+duration:  
 #cost - Cost in USD. If the content is offered without cost, enter 0
-cost: 0 
+cost: 5
 #author - Amazon alias of the primary author of the content
-author: mpgoetz 
+author: awsandy
 #audience - Names of the personas associated with this workshop
 audience: 
   - IT Professional
