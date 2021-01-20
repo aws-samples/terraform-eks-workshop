@@ -796,7 +796,7 @@ Apply complete! Resources: 19 added, 0 changed, 0 destroyed.
 
 -----
 
-Check codebuild is authorised to access the EKS cluster ok
+Check CodeBuild is authorised to access the EKS cluster ok
 
 ```bash
 kubectl get -n kube-system configmap/aws-auth -o yaml | grep -i codebuild

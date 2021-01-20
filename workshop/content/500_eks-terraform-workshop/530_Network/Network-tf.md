@@ -11,6 +11,11 @@ This diagram shows the EKS VPC and CI/CD VPC we will build in this section:
 ![tf-state](/images/andyt/net-1.jpg)
 
 
+{{% notice info %}}
+*Disclaimer: For production workloads you should expand the default and CI/CD VPC's to use multiple subnets in two or three availability zones.*
+{{% /notice %}}
+
+### Deploying the Network
 
 ```
 cd ~/environment/tfekscode/net 

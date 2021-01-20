@@ -21,7 +21,7 @@ remote: Total 1032 (delta 530), reused 976 (delta 474), pack-reused 0
 Receiving objects: 100% (1032/1032), 393.22 KiB | 493.00 KiB/s, done.
 Resolving deltas: 100% (530/530), done.
 
-Navigate to your cloned repository by typing "cd /home/ec2-user/environment/tfekscode" to start working with "https://github.com/awsandy/Terraform-EKS-Code.git"
+Navigate to your cloned repository by typing "cd /home/ec2-user/environment/tfekscode" to start working with "https://github.com/aws-samples/terraform-eks-code.git"
 
 To set your display name run "git config --global user.name YOUR_USER_NAME"
 To set your display email run "git config --global user.email YOUR_EMAIL_ADDRESS"
@@ -44,7 +44,7 @@ bash: cd: /home/ec2-user/environment/tfekscode: No such file or directory
 {{%expand "Expand here to see the optional step" %}}
 ```
 cd ~/environment
-git clone https://github.com/awsandy/Terraform-EKS-Code.git tfekscode
+git clone https://github.com/aws-samples/terraform-eks-code.git tfekscode
 ```
 {{%/expand%}}
 

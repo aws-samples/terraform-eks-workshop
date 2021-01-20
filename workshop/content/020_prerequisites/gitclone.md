@@ -10,5 +10,5 @@ We have a repository of tools to help with the remaining workshop. Clone the
 repository to your local workspace with this command:
 ```
 cd ~/environment
-git clone https://github.com/awsandy/tfekscode.git
+git clone https://github.com/aws-samples/terraform-eks-code.git
 ```
