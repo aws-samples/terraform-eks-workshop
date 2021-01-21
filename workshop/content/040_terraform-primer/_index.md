@@ -1,8 +1,8 @@
 ---
-title: "Terraform Primer"
+title: "4. Terraform Primer"
 chapter: true
 weight: 40
-pre: <i class='fa fa-road'></i>
+# pre: <i class='fa fa-road'></i>
 tags:
   - workshop1
 ---

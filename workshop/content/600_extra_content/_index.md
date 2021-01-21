@@ -1,8 +1,8 @@
 ---
-title: "Extra Optional Activities"
+title: "6. Extra Optional Activities"
 chapter: true
 weight: 600
-pre: <i class='fa fa-road'></i>
+# pre: <i class='fa fa-road'></i>
 tags:
 ---
 
