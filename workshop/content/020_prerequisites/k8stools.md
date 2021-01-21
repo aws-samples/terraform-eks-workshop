@@ -55,6 +55,8 @@ cd ~/environment/tfekscode
 source ./setup-tools.sh
 ```
 
+Check you see messages at the end of the output that terraform, kubectl, jq and aws in the path. Also that the AWS_REGION is set and the ACCOUNT_ID to a 12 digit number.
+
 {{< output >}}
 Install OS tools
 

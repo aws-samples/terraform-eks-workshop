@@ -1007,7 +1007,7 @@ Note from the output that:
 * The deployment is referencing a private ECR repository belonging to your account.
 
 
-If you see pods aparently stuck in "ContainerCreating" mode for a minute or more try the following:
+**If you see pods aparently stuck in "ContainerCreating" mode for a minute or more try the following:**
 
 
 {{%expand "Expand here to see the fix" %}}

@@ -7,7 +7,7 @@ tags:
 
 ---
 
-# Getting Started
+### Getting Started
 
 
 To start the workshop, follow the following instructions ...
