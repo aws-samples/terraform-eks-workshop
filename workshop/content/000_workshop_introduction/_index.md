@@ -26,7 +26,7 @@ tags:
 * Workshop Introduction (this part).
 * An introduction to Kubernetes.
 * Setting up the Workshop environment.
-* A Terraform introduction & primer.
+* A Terraform introduction & primer for those unfamiliar with Terraform.
 * Building a private EKS cluster with Terraform.
 * Extra optional activities.
 * Conclusion.
