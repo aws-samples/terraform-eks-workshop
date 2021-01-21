@@ -2,9 +2,9 @@
 title: "9. Advanced VPC Networking with EKS"
 chapter: true
 weight: 570
-pre: '<i class="fa fa-film" aria-hidden="true"></i> '
+# pre: '<i class="fa fa-film" aria-hidden="true"></i> '
 tags:
-  - intermediate
+
 ---
 
 

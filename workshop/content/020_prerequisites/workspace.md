@@ -4,6 +4,9 @@ chapter: false
 weight: 14
 ---
 
+### Cloud9 IDE 
+
+AWS Cloud9 is a cloud-based integrated development environment (IDE) that lets you write, run, and debug your code with just a browser
 
 {{% notice tip %}}
 Ad blockers, javascript disablers, and tracking blockers should be disabled for

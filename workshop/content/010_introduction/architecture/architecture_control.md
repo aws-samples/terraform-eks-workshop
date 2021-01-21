@@ -5,6 +5,9 @@ draft: false
 weight: 100
 ---
 
+
+The control plane manages the worker nodes and the pods in the cluster. EKS provides a managed control plane.
+
 {{<mermaid>}}
 graph TB
 kubectl{kubectl}
