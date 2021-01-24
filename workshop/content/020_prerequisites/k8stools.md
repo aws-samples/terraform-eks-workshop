@@ -33,20 +33,15 @@ To set your display email run "git config --global user.email YOUR_EMAIL_ADDRESS
 
 #### Install the tools
 
-Optional step - **only perform if the tfekscode folder does not exist**
-```bash
-cd ~/environment/tfekscode
-```
-{{< output >}}
-bash: cd: /home/ec2-user/environment/tfekscode: No such file or directory
-{{< /output >}}
+Clone the workshop repo - and use a helper script to setup the workshop tools: 
 
-{{%expand "Expand here to see the optional step" %}}
-```
+```bash
 cd ~/environment
+```
+
+```
 git clone https://github.com/aws-samples/terraform-eks-code.git tfekscode
 ```
-{{%/expand%}}
 
 Setup the workshop tools:
 
