@@ -63,7 +63,7 @@ Resource actions are indicated with the following symbols:
 
 Terraform will perform the following actions:
 
-  # aws_iam_role.eksctl-mycluster1-cluster-ServiceRole-HUIGIC7K7HNJ will be created
+  # aws_iam_role.cluster-ServiceRole will be created
   + resource "aws_iam_role" "eksctl-mycluster1-cluster-ServiceRole-HUIGIC7K7HNJ" {
       + arn                   = (known after apply)
       + assume_role_policy    = jsonencode(
