@@ -1,5 +1,5 @@
 ---
-title: "3 .Start the Workshop"
+title: "3. Start the Workshop"
 chapter: true
 # pre: <i class='fa fa-road'></i>
 weight: 20
