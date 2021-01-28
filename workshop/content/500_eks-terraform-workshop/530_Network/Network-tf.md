@@ -105,7 +105,7 @@ To perform exactly these actions, run the following command to apply:
 
 You can see from the plan the following resources will be created - open the corresponding files to see the Terraform HCL code that details the configuration:
 
-* A VPC (**vpc-mycluster1.tf**).
+* A VPC (**vpc-cluster.tf**).
 * A secondary VPC CIDR block (**aws_vpc_ipv4_cidr_block_association__vpc-cidr-assoc.tf**).
 * Various VPE Endpoints (__vpce.tf__).
 * Subnets (**subnets-eks.tf**).
@@ -132,11 +132,11 @@ Build the Network environment (**note this will take a few minutes**):
 terraform apply tfplan
 ```
 {{< output >}}
-aws_eip.eipalloc-052dd24eaa93ed064: Creating...
-aws_vpc.vpc-mycluster1: Creating...
 aws_vpc.vpc-cicd: Creating...
-aws_eip.eipalloc-052dd24eaa93ed064: Creation complete after 0s [id=eipalloc-0abb3a74a2683a5a1]
-aws_vpc.vpc-cicd: Creation complete after 1s [id=vpc-0441b33ebf6a45cde]
+aws_eip.eipalloc-052dd24eaa93ed064: Creating...
+aws_vpc.cluster: Creating...
+aws_eip.eipalloc-052dd24eaa93ed064: Creation complete after 0s [id=eipalloc-04d80992ad3626c3d]
+aws_vpc.vpc-cicd: Creation complete after 1s [id=vpc-0973e883cf3e8623b]
 
 **OUTPUT TRUNCATED FOR BREVITY**
 

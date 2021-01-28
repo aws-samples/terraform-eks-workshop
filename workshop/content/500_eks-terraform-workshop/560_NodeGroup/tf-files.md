@@ -248,7 +248,7 @@ resource "aws_eks_node_group" "ng1" {
 ### null_resource.tf
 
 
-The null resource runs the test.sh and auth.sh script after the creation of the cluster **depends_on = [aws_eks_cluster.mycluster1]**
+The null resource runs the test.sh and auth.sh script after the creation of the cluster **depends_on = [aws_eks_cluster.cluster]**
 
 {{%expand "Expand here to see the code" %}}
 ```bash

@@ -116,7 +116,7 @@ Terraform will perform the following actions:
       + url          = (known after apply)
     }
 
-  # aws_eks_cluster.mycluster1 will be created
+  # aws_eks_cluster.cluster will be created
   + resource "aws_eks_cluster" "mycluster1" {
       + arn                       = (known after apply)
       + certificate_authority     = (known after apply)
@@ -214,13 +214,13 @@ Build the environment:
 terraform apply tfplan
 ```
 {{< output >}}
-aws_eks_cluster.mycluster1: Creating...
-aws_eks_cluster.mycluster1: Still creating... [10s elapsed]
+aws_eks_cluster.cluster: Creating...
+aws_eks_cluster.cluster: Still creating... [10s elapsed]
 
 ** OUTPUT TRUNCATED FOR BREVITY **
 
-aws_eks_cluster.mycluster1: Still creating... [17m20s elapsed]
-aws_eks_cluster.mycluster1: Creation complete after 17m24s [id=mycluster1]
+aws_eks_cluster.cluster: Still creating... [17m20s elapsed]
+aws_eks_cluster.cluster: Creation complete after 17m24s [id=mycluster1]
 data.tls_certificate.cluster: Refreshing state...
 null_resource.gen_cluster_auth: Creating...
 null_resource.gen_cluster_auth: Provisioning with 'local-exec'...

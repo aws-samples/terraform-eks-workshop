@@ -42,6 +42,10 @@ terraform {
     source = "hashicorp/external"
     version = "~> 2.0"
     }
+    kubernetes = {
+    source = "hashicorp/kubernetes"
+    version = "~> 1.13.2"
+    }
     
   }
 }
@@ -53,6 +57,7 @@ provider "aws" {
 }
 provider "null" {}
 provider "external" {}
+
 ```
 {{%/expand%}}
 

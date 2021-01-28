@@ -59,19 +59,19 @@ resource "aws_eks_cluster" "mycluster1" {
 }
 
 output cluster-name {
-  value=aws_eks_cluster.mycluster1.name
+  value=aws_eks_cluster.cluster.name
 }
 
 output cluster-sg {
-  value=aws_eks_cluster.mycluster1.vpc_config[0].cluster_security_group_id
+  value=aws_eks_cluster.cluster.vpc_config[0].cluster_security_group_id
 }
 
 output ca {
-  value=aws_eks_cluster.mycluster1.certificate_authority[0].data
+  value=aws_eks_cluster.cluster.certificate_authority[0].data
 }
 
 output endpoint {
-  value=aws_eks_cluster.mycluster1.endpoint
+  value=aws_eks_cluster.cluster.endpoint
 }
 
 ```
@@ -90,13 +90,13 @@ Add the open connect provider to the EKS cluster
 ```bash 
 ## OIDC Provider
 data "tls_certificate" "cluster" {
-  url = aws_eks_cluster.mycluster1.identity.0.oidc.0.issuer
+  url = aws_eks_cluster.cluster.identity.0.oidc.0.issuer
 }
 resource "aws_iam_openid_connect_provider" "cluster" {
   client_id_list = ["sts.amazonaws.com"]
 #  thumbprint_list = concat([data.tls_certificate.cluster.certificates.0.sha1_fingerprint], var.oidc_thumbprint_list)
   thumbprint_list = [data.tls_certificate.cluster.certificates.0.sha1_fingerprint]
-  url = aws_eks_cluster.mycluster1.identity.0.oidc.0.issuer
+  url = aws_eks_cluster.cluster.identity.0.oidc.0.issuer
 }
 
 ### 
@@ -130,7 +130,7 @@ resource "aws_iam_role" "cluster" {
 
 ### null_resource.tf
 
-The null resource runs the **test.sh** and **auth.sh** scripts after the creation of the cluster **depends_on = [aws_eks_cluster.mycluster1]**
+The null resource runs the **test.sh** and **auth.sh** scripts after the creation of the cluster **depends_on = [aws_eks_cluster.cluster]**
 
 
 {{%expand "Expand here to see the code" %}}
@@ -139,14 +139,14 @@ resource "null_resource" "gen_backend" {
 triggers = {
     always_run = "${timestamp()}"
 }
-depends_on = [aws_eks_cluster.mycluster1]
+depends_on = [aws_eks_cluster.cluster]
 provisioner "local-exec" {
     on_failure  = fail
     interpreter = ["/bin/bash", "-c"]
     command     = <<EOT
-        echo -e "\x1B[31m Warning! Testing Network Connectivity ${aws_eks_cluster.mycluster1.name}...should see port 443/tcp open  https\x1B[0m"
+        echo -e "\x1B[31m Warning! Testing Network Connectivity ${aws_eks_cluster.cluster.name}...should see port 443/tcp open  https\x1B[0m"
         ./test.sh
-        echo -e "\x1B[31m Warning! Checking Authorization ${aws_eks_cluster.mycluster1.name}...should see Server Version: v1.17.xxx \x1B[0m"
+        echo -e "\x1B[31m Warning! Checking Authorization ${aws_eks_cluster.cluster.name}...should see Server Version: v1.17.xxx \x1B[0m"
         ./auth.sh
         echo "************************************************************************************"
      EOT
