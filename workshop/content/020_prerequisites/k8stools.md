@@ -31,6 +31,7 @@ To set your display email run "git config --global user.email YOUR_EMAIL_ADDRESS
 {{< /output >}}
 -->
 
+
 #### Install the tools
 
 Clone the workshop repo - and use a helper script to setup the workshop tools: 
@@ -43,10 +44,25 @@ cd ~/environment
 git clone https://github.com/aws-samples/terraform-eks-code.git tfekscode
 ```
 
-Setup the workshop tools:
+#### Check the Cloud9 IDE is setup correctly:
 
 ```
 cd ~/environment/tfekscode
+./check.sh
+```
+
+Provided the Cloud9 workspace was setup as described the following script should show 3x PASSED: messages:
+
+{{< output >}}
+Checking workshop setup ...
+PASSED: Found Instance profile eksworkshop-admin - proceed with the workshop
+PASSED: IAM role valid - eksworkshop-admin
+PASSED: Cloud9 IDE name is valid - contains eks-terraform
+{{< /output >}}
+
+#### Setup the workshop tools:
+
+```
 source ./setup-tools.sh
 ```
 
