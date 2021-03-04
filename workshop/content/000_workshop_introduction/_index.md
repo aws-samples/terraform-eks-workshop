@@ -34,7 +34,7 @@ tags:
 
 ### Workshop Outcomes
 
-The intent of this workshop is to educate users about the features of Amazon EKS using Terraform as the Infrastructire as Code and Application deployment tooling where ever possible.
+The intent of this workshop is to educate users about the features of Amazon EKS using Terraform as the Infrastructure as Code and Application deployment tooling where ever possible.
 
 ### Audience 
 
