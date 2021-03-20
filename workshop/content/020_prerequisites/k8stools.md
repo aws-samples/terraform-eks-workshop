@@ -44,23 +44,13 @@ cd ~/environment
 git clone https://github.com/aws-samples/terraform-eks-code.git tfekscode
 ```
 
-#### Check the Cloud9 IDE is setup correctly:
-
-```
-cd ~/environment/tfekscode
-./check.sh
-```
-
-Provided the Cloud9 workspace was setup as described the following script should show 3x PASSED: messages:
-
-{{< output >}}
-Checking workshop setup ...
-PASSED: Found Instance profile eksworkshop-admin - proceed with the workshop
-PASSED: IAM role valid - eksworkshop-admin
-PASSED: Cloud9 IDE name is valid - contains eks-terraform
-{{< /output >}}
 
 #### Setup the workshop tools:
+
+```bash
+cd ~/environment/tfekscode
+```
+
 
 ```
 source ./setup-tools.sh
@@ -87,6 +77,24 @@ ACCOUNT_ID is 123456789012
 {{< /output >}}
 
 ---
+
+#### Check the Cloud9 IDE is setup correctly:
+
+```
+./check.sh
+```
+
+Provided the Cloud9 workspace was setup as described the following script should show 3x PASSED: messages:
+
+{{< output >}}
+Checking workshop setup ...
+PASSED: Found Instance profile eksworkshop-admin - proceed with the workshop
+PASSED: IAM role valid - eksworkshop-admin
+PASSED: Cloud9 IDE name is valid - contains eks-terraform
+{{< /output >}}
+
+
+----
 
 #### Resize the operating system disk
 
