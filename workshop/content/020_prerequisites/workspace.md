@@ -27,7 +27,7 @@ Cloud9 requires third-party-cookies. You can whitelist the [specific domains]( h
 
 ### Launch Cloud9 in your closest region:
 
-Create a Cloud9 Environment: [https://eu-west-2.console.aws.amazon.com/cloud9/home?region=eu-west-2](https://eu-west-2.console.aws.amazon.com/cloud9/home?region=eu-west-2)
+Create a Cloud9 Environment: [https://eu-west-1.console.aws.amazon.com/cloud9/home?region=eu-west-1](https://eu-west-1.console.aws.amazon.com/cloud9/home?region=eu-west-1)
 
 <!---
 {{< tabs name="Region" >}}
