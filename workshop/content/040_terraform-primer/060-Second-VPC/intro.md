@@ -5,7 +5,7 @@ draft: false
 weight: 61
 ---
 
-## Creating a third VPC by changing one character !
+## Creating another VPC by changing one character !
 
 Next we are going to observe some of the advantages you can get with  Infrastructure as code - provided it is properly paramatised.
 

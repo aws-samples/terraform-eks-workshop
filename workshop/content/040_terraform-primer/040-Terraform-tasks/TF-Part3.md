@@ -148,7 +148,7 @@ It will take a few minutes for the resources to create
 
 ----
 
-Go to the console as before - and find:
+Go to the AWS console as before and find:
 
 * The new VPC
 * New subnets

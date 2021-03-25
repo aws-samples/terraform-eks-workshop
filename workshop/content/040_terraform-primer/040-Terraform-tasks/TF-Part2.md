@@ -112,7 +112,7 @@ resource "aws_vpc" "vpc-10-1" {
     enable_classiclink_dns_support   = false
     enable_dns_hostnames             = false
     enable_dns_support               = true
-    ***id                               = "vpc-0817cafa92c07b435"**
+    id                               = "vpc-0817cafa92c07b435"
     instance_tenancy                 = "default"
     main_route_table_id              = "rtb-04263d67204e83417"
     owner_id                         = "665389187423"
@@ -137,7 +137,7 @@ And if your happy with the plan .....
 terraform apply tfplan
 ```
 
-### Now use the console to check all the reosurces exist
+### Now use the console to check all the resources exist
 
 You may need to hit refresh if your console window was still open
 

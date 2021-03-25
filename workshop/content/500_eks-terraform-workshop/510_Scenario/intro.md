@@ -19,7 +19,7 @@ Security is a critical component of configuring and maintaining Kubernetes clust
 
 This can be further enhanced by provisioning an EKS cluster to operate in a private VPC with no Internet ingress or egress connectivity.
 
-In this section, we take a look at how to build the private EKS cluster in distict stages designed to reflect different responsibility and minimum privilege models that are sometimes seen in large Enterpise organizations.
+In this section, we take a look at how to build the private EKS cluster in distinct stages designed to reflect different responsibility and minimum privilege models that are sometimes seen in large organizations.
 
 
 The build out of our private EKS Cluster is divided into these stages, each of which could be performed by a separate team.
