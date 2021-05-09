@@ -85,7 +85,7 @@ commands will detect it and remind you to do so if necessary.
 
 ----
 
-## Create a Terraform file to create a new VPC - 
+## Create a Terraform file to create a new VPC: 
 
 
 * Make sure you have navigated and clicked the "tflab1" directory in the Cloud9 file browser:
