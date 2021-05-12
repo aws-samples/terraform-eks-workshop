@@ -16,7 +16,7 @@ Enter the provided hash in the text box. The button on the bottom right corner c
 
 Next use the **Continue with Login with Amazon** button:
 
-![Event Engine](/images/andyt/amazon-login.jpg)
+![Event Engine](/images/andyt/amazon-login.png)
 
 Provide your Amazon Retail (shopping) credentials:
 
@@ -26,10 +26,10 @@ Once logged in the Event Engine Dashboard will be displayed:
 
 ![Event Engine Dashboard](/images/event-engine-dashboard.png)
 
-Click on **AWS Console** on dashboard.
+Click on `AWS Console` on dashboard.
 
 ![Event Engine AWS Console](/images/event-engine-aws-console.png)
 
-Take the defaults and click on **Open AWS Console**. This will open AWS Console in a new browser tab.
+Take the defaults and click on `Open AWS Console`. This will open AWS Console in a new browser tab.
 
 Once you have completed the step above, you can head straight to [**Open the Workspace**](/020_prerequisites/workspace/)
