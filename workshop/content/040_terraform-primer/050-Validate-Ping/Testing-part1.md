@@ -11,7 +11,7 @@ Connect to the first instance `instance-10-1-4-first` you created in vpc-10-1 us
 
 
 * Go to `AWS Systems Manager` in the AWS console
-* 
+  
 * On the left hand menu click `Fleet Manager`
 
 * Select the `instance-10-1-4-first` instance, click `Instance Actions`, `Start Session`
