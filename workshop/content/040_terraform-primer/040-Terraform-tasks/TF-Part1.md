@@ -15,7 +15,7 @@ weight: 41
 
 ## Hands-on creating VPCs using Terraform
 
-IN your Cloud9 IDE terminal change directory to:
+In your Cloud9 IDE terminal change directory to:
 
 ```bash
 cd ~/environment/tfekscode/primer/tflab1
@@ -292,7 +292,7 @@ Note what this does:
 
 * It updates it's local state first
 * Then it re-reads your local .tf files
-* The it figures out if any changes need to be made, new infrastructure deployed ot even destroyed.
+* Then it figures out if any changes need to be made, new infrastructure deployed or even destroyed.
 
 Try making some changes and see what happens
 
