@@ -9,13 +9,17 @@ weight: 55
 
 Connect to the first instance `instance-10-1-4-first` you created in vpc-10-1 using Systems Manager.
 
-![sm1](/images/andyt/syst-man1.png)
 
-* Going to `AWS Systems Manager`, section `Fleet Manager`
+* Go to `AWS Systems Manager` in the AWS console
+* 
+* On the left hand menu click `Fleet Manager`
 
 * Select the `instance-10-1-4-first` instance, click `Instance Actions`, `Start Session`
-  
 
+
+![sm1](/images/andyt/syst-man1.png)
+
+  
 While connected to the instance...
 
 * Can you reach the internet? - `ping aws.amazon.com`
