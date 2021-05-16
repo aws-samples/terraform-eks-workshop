@@ -7,5 +7,5 @@ tags:
 ---
 
 
-In this Chapter, we will deploy the sample app to both node groups and observe the network addreses used by the pods.
+In this Chapter, we will deploy the sample app to both node groups and observe the network addresses used by the pods.
 

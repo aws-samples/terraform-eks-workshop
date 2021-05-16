@@ -11,12 +11,12 @@ The first three files have been pre-created from the gen-backend.sh script in th
 
 ### backend-net.tf
 
-This specifices the location of the backend Terraform state file on S3 and the dynamoDB table used for the state file locking. Also the Terraform version requirements.
+This specifies the location of the backend Terraform state file on S3 and the dynamoDB table used for the state file locking. Also the Terraform version requirements.
 
 {{%expand "Expand here to see the code" %}}
 ```bash
 terraform {
-required_version = "~> 0.14.3"
+required_version = "~> 0.15.3"
 required_providers {
   aws = {
    source = "hashicorp/aws"
@@ -49,7 +49,7 @@ profile = var.profile
 
 ### vars-dynamodb.tf
 
-This file defines some varaibles with default values for the seven DynamoDB tables.
+This file defines some variables with default values for the seven DynamoDB tables.
 
 
 {{%expand "Expand here to see the code" %}}
@@ -103,7 +103,7 @@ variable "table_name_eks-cidr" {
 
 ### vars-main.tf
 
-This file defines some varaibles with default the region and default profile name and EKS cluster name
+This file defines some variables with default the region and default profile name and EKS cluster name
 
 
 {{%expand "Expand here to see the code" %}}
@@ -145,7 +145,7 @@ default=7
 
 ### vpc-cluster.tf
 
-This defines the VPC we are going to use, note the "output" variables eks-vpc and eks-cidr, These values can be accessed from other build sections using Terraform remote state which will be descibled later.
+This defines the VPC we are going to use, note the "output" variables eks-vpc and eks-cidr, These values can be accessed from other build sections using Terraform remote state which will be described later.
 
 {{%expand "Expand here to see the code" %}}
 ```bash
@@ -200,7 +200,7 @@ resource "aws_vpc_ipv4_cidr_block_association" "vpc-cidr-assoc" {
 
 This file defines the 6x private subnets into which we will provision the managed worker node network interfaces that make up our clusters node groups. Three private subnets in the 10.0.x.x address space and three more in the secondary CIDR address space 100.64.x.x.
 
-Note once agian that an outputs for the firat 3 subnets *sub-priv1* etc. are defined.
+Note once again that an outputs for the first 3 subnets *sub-priv1* etc. are defined.
 
 {{%expand "Expand here to see the code" %}}
 ```bash
@@ -309,7 +309,7 @@ output "cluster-sg" {
 
 ---
 
-Next 4 route tables are defined, only one of them is shown here. Note there arte no routes defined, these get populated later. 
+Next 4 route tables are defined, only one of them is shown here. Note there are no routes defined, these get populated later. 
 
 ###  aws_route_table__rtb-*.tf
 
@@ -413,7 +413,7 @@ There are other Terraform files that define the VPC used for our CICD pipeline w
 
 Having read the Terraform files above you should find these straight forward to follow and understand.
 
-The the CICD VPC does have (outbound) internet connectivity and so needs an Internet Gateway **aws_internet_gateway__eks-cicd.tf** a NAT Gateway **aws_nat_gateway__eks-cicd.tf** and an assiciated public IP address **aws_eip__eipalloc-cicd-natgw.tf**
+The the CICD VPC does have (outbound) internet connectivity and so needs an Internet Gateway **aws_internet_gateway__eks-cicd.tf** a NAT Gateway **aws_nat_gateway__eks-cicd.tf** and an associated public IP address **aws_eip__eipalloc-cicd-natgw.tf**
 
 
 ---

@@ -10,7 +10,7 @@ weight: 553
 cd ~/environment/tfekscode/c9net
 ```
 
-Run the script to initialze the Terraform
+Run the script to Initialize the Terraform
 
 ```
 terraform init
@@ -151,7 +151,7 @@ To perform exactly these actions, run the following command to apply:
 
 You can see from the plan the following resources will be created to link the Cloud9 IDE to the EKS VPC
 
-* VPC peerings.
+* VPC peering.
 * VPC route table entries for the default and EKS subnets:
   * A route to 172.31 via the VPC peering for the EKS VPC.
   * A route to 10.0 via the VPC peering for the Default VPC.

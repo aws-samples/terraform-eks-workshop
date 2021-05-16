@@ -73,7 +73,7 @@ key = "terraform/at-terraform-eks-workshop1-cluster.tfstate"
 
 ### data-eks-cluster.tf
 
-Get a data resource ("read only") refernce for the EKS cluster control plane. Note the use of **data.terraform_remote_state.cluster.xxx** variables.
+Get a data resource ("read only") reference for the EKS cluster control plane. Note the use of **data.terraform_remote_state.cluster.xxx** variables.
 
 {{%expand "Expand here to see the code" %}}
 
@@ -108,7 +108,7 @@ output "cluster-name" {
 This file will be base64 encoded and passed into the launch template is will:
 
 * Join this node to the cluster **sudo /etc/eks/bootstrap.sh**
-  * Note how soem paremeters for this are passed via Terraform data resources eg. **'${data.aws_eks_cluster.eks_cluster.name}'**
+  * Note how some parameters for this are passed via Terraform data resources eg. **'${data.aws_eks_cluster.eks_cluster.name}'**
 * Install our custom software/configuration - in this case the SSM agent.
   
 
@@ -155,12 +155,12 @@ data "aws_ssm_parameter" "eksami" {
 
 ### launch_template.tf
 
-The lauch template to use with the EKS managed node, this refernces:
+The launch template to use with the EKS managed node, this references:
 
 * Our choice of AMI: **image_id = data.aws_ssm_parameter.eksami.value**.
 * Our base64 user data script **user_data = base64encode(local.eks-node-private-userdata)**.
 
-The use of **create_before_destroy=true** is also important to allow us to create new versions of the launch tmeplate.
+The use of **create_before_destroy=true** is also important to allow us to create new versions of the launch template.
 
 {{%expand "Expand here to see the code" %}}
 ```bash

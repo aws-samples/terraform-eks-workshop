@@ -9,5 +9,5 @@ weight: 1
 
 ![EKS](/images/3-service-animated.gif)
 
-In this workshop, we will explore how to setup and configure the Amazon Elastic Kubernetes Service using Terraform
+In this workshop, we will explore how to setup and configure the Amazon Elastic Kubernetes Service (EKS) using Terraform.
 

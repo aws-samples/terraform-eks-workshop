@@ -20,7 +20,7 @@ These first five files have been pre-created from the gen-backend.sh script in t
 
 ### aws_eks_cluster__mycluster1.tf
 
-Create the EKS cluster, note the use of various remote outpur varaibles **data.terraform_remote_state** values.
+Create the EKS cluster, note the use of various remote output variables **data.terraform_remote_state** values.
 
 {{%expand "Expand here to see the code" %}}
 

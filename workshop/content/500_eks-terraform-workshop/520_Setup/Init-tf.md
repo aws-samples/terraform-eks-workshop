@@ -11,13 +11,13 @@ weight: 522
 cd ~/environment/tfekscode/tf-setup 
 ```
 
-Initialze the Terraform backend environment:
+Initialize the Terraform backend environment:
 
 ```
 terraform init
 ```
 
-The command wil creat a hidden directory in your file system called ".terraform" and it will download all the resource providers that are needed, for our environment this includes the aws, external and null providers:
+The command wil create a hidden directory in your file system called ".terraform" and it will download all the resource providers that are needed, for our environment this includes the aws, external and null providers:
 
 
 {{< output >}}
@@ -423,10 +423,10 @@ s3_bucket = [
 
 The **gen-backend.sh script** generates these terraform files for use in other sections and copies them into place:
 
-* generated/backend-{section}.tf   *(For each section this defines where our Terrafor state file is located)*
+* generated/backend-{section}.tf   *(For each section this defines where our Terraform state file is located)*
 * generated/remote-{section}.tf *(This allows us to access output variables from other sections)*
 * var-dynamodb.tf is also copied to each of the sections  
-* Various other files are copied into place to ensure Terraform can initialise correctly in your environment. 
+* Various other files are copied into place to ensure Terraform can initialize correctly in your environment. 
 
 
   

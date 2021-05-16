@@ -8,4 +8,4 @@ tags:
 
 ### Deploy the AWS Load Balancer Controller
 
-In this Chapter, we will use Terraform to enables the AWS Load Balancer controller
+In this Chapter we will use Terraform to enable the AWS Load Balancer controller

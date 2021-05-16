@@ -105,7 +105,7 @@ Role Policy attachments:
 
 ### aws_s3_bucket__codepipeline-bucket.tf
 
-This uses an external data provider to run a script: **get-bucket-name.sh** whcih returns a hopefully unique name for the bucket based on you hostname and a fine-grained timestamp.
+This uses an external data provider to run a script: **get-bucket-name.sh** which returns a unique name for the bucket based on you hostname and a fine-grained timestamp.
 
 
 {{%expand "Expand here to see the code" %}}
@@ -137,7 +137,7 @@ resource "aws_s3_bucket" "codepipeline-bucket" {
 
 ---
 
-## CodeCommit, CodeBuild and CodePipeline recources
+## CodeCommit, CodeBuild and CodePipeline recourses
 
 ### aws_codecommit_repository__eksworkshop-app.tf
 
@@ -158,12 +158,12 @@ resource "aws_codecommit_repository" "eksworkshop-app" {
 
 This creates a CodeBuild project , this will encrypt our repo using the key specified **encryption_key = data.aws_kms_alias.s3.arn**, and use the defined service role **aws_iam_role.codebuild-eks-cicd-build-app-service-role**
 
-By default CodeBuild looks for a file called **buildspec.yml** in the root of the code repository. This file defines all ther steps to be taken by the build process.
+By default CodeBuild looks for a file called **buildspec.yml** in the root of the code repository. This file defines all the steps to be taken by the build process.
 
 The vpc_config section specifies the VPC and subnet that CodeBuild connects to.
 
 {{% notice info %}}
-*Disclaimer: For production workloads you should use multiple subnets in muliple availability zones*
+*Disclaimer: For production workloads you should use multiple subnets in multiple availability zones*
 {{% /notice %}}
 
 {{%expand "Expand here to see the code" %}}
@@ -316,7 +316,7 @@ resource "aws_codepipeline" "pipe-eksworkshop-app" {
 ### aws_ecr_repository__xxxx.tf
 
 
-These files define privare ECR repositories for the docker images we will use, one example is shown here as they are all similar:
+These files define private ECR repositories for the docker images we will use, one example is shown here as they are all similar:
 
 {{%expand "Expand here to see the code" %}}
 ```bash
@@ -339,8 +339,8 @@ resource "aws_ecr_repository" "nginx" {
 
 ### null-auth-cicd.tf & null-load_ecr.tf
 
-These null provioners envoke the auth-cicd.sh and load_ecr.sh scripts below
-Note the use of the **depends_on** in both to ensure they don't run until the underlying recources are in place
+These null provisioners evoke the auth-cicd.sh and load_ecr.sh scripts below
+Note the use of the **depends_on** in both to ensure they don't run until the underlying resources are in place
 
 {{%expand "Expand here to see the code" %}}
 ```bash
@@ -391,9 +391,9 @@ null provisioner scripts
 
 ###  auth-cicd.sh
 
-This scipt authorizes the CodeBuild role to access the EKS cluster by patching the aws-auth configmap
+This script authorizes the CodeBuild role to access the EKS cluster by patching the aws-auth configmap
 
-The CodeBuild role **codebuild-eks-cicd-build-app-service-role** is added to the **system:masters** kubernets group which gives full admin rights to the cluster.
+The CodeBuild role **codebuild-eks-cicd-build-app-service-role** is added to the **system:masters** kubernetes group which gives full admin rights to the cluster.
 
 In production environments you would want to scope this down to perhaps a specific namespace using Kubernetes RBAC. 
 
@@ -414,7 +414,7 @@ kubectl patch configmap/aws-auth -n kube-system --patch "$(cat /tmp/aws-auth-pat
 
 ###  load_ecr.sh
 
-This script logs in to our private ECR repo and then pulls some docker images to the Cloud9 IDE, tags them appropriately for our private ECR repo's and docker push's them into place.
+This script logs in to our private ECR repo and then pulls some docker images to the Cloud9 IDE, tags them appropriately for our private ECR repositories and `docker push`'s them into place.
 
 We have to do this as the EKS cluster can only access this private container repo, it has no access to public container repositories.
 

@@ -13,13 +13,13 @@ In this example we use a local state files for the Load Balancer creation as an 
 
 ### aws.tf
 
-This specifices the location of the backend Terraform state file which in this case is locally stored in the current directory.
+This specifies the location of the backend Terraform state file which in this case is locally stored in the current directory.
 
 {{%expand "Expand here to see the code" %}}
 
 ```bash
 terraform {
-  required_version = "~> 0.14.3"
+  required_version = "~> 0.15.3"
   required_providers {
     aws = {
     source = "hashicorp/aws"
@@ -52,7 +52,7 @@ provider "external" {}
 
 ### vars-main.tf
 
-This file defines some varaibles with default values for the five dynamoDB tables, the region and default profile name
+This file defines some variables with default values for the five dynamoDB tables, the region and default profile name
 
 {{%expand "Expand here to see the code" %}}
 ```bash
@@ -169,7 +169,7 @@ provisioner "local-exec" {
 
 ### aws_iam_policy-lb2.tf
 
-Note this **depends_on** the previous null_resource "policy" - which downlaods the iam-policy.json file.
+Note this **depends_on** the previous null_resource "policy" - which downloads the iam-policy.json file.
 
 {{%expand "Expand here to see the code" %}}
 ```bash
@@ -226,7 +226,7 @@ This script:
 
 Using helm makes this a lot simpler as the chart does several necessary steps for us: 
 
-* As this controller is being envoked in a private VPC we have to specify access to the dependant image via a local VPC endpoint:  **--set image.repository=602401143452.dkr.ecr.$1.amazonaws.com/amazon/aws-load-balancer-controller**   The regional aspect of the endpoint is passed via a variable **$1**.
+* As this controller is being invoked in a private VPC we have to specify access to the dependant image via a local VPC endpoint:  **--set image.repository=602401143452.dkr.ecr.$1.amazonaws.com/amazon/aws-load-balancer-controller**   The regional aspect of the endpoint is passed via a variable **$1**.
 * The helm chart also creates a necessary service account **--set serviceAccount.name=aws-load-balancer-controller**.
 * The chart also deals with TLS certificate prerequisites transparently for us.
 

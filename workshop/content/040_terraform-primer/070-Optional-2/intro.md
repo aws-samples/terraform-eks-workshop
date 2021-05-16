@@ -44,11 +44,11 @@ git clone https://github.com/aws-samples/aws2tf.git
 
 Now we are going to use aws2tf to:
 
-* Import the terraform state from existing AWS resources
-* Generate the terraform files for the configutation
-* Perform a "terraform plan" to validate the configuration files generated
+* Import the terraform state from existing AWS resources.
+* Generate the terraform files for the configuration.
+* Perform a "terraform plan" to validate the configuration files generated.
 
-**The following operartion takes 5-10 minutes**
+**The following operation takes 5-10 minutes**
 
 ```
 cd ~/environment/aws2tf
@@ -58,12 +58,12 @@ cd ~/environment/aws2tf
 Lots of output is produced as aws2tf:
 
 * Loops through each AWS resource type
-* Performs the necessary 'terraform import' commands
+* Performs the necessary `terraform import` commands
 * Creates the requited *.tf configuration files in the "generated" directory
 * And finally runs a 'terraform plan'
 
 
-You may notice a few errors like
+You may notice a few errors like:
 
 ```
 Found Error: Error: Attribute name required exiting .... (pass for now)
@@ -100,7 +100,7 @@ terraform plan .
 
 ----
 
-In your own environment you could now switch AWS Accounts eg. from Development to Test issue the terraform plan and apply commands and you'd get an exact replica of the devleopment environment in test - all without writing any code!
+In your own environment you could now switch AWS Accounts eg. from Development to Test issue the terraform plan and apply commands and you'd get an exact replica of the development environment in test - all without writing any code!
 
 On the flip side this method of generating code doesn't use any advanced techniques. There are no "count" variables, format statements etc. or other great Terraform techniques such as using Terraform Modules.
 

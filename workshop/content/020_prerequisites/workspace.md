@@ -39,7 +39,7 @@ Create a Cloud9 Environment: [https://eu-west-1.console.aws.amazon.com/cloud9/ho
 - Select **Create environment**
 - Name it **eks-terraform**, click `Next`.
 - Choose **"t3.small"** for instance type, take all default values and click `Next Step`
-- and on the Review page double check the Name is set to "eks-terraform" amd then click `Create environment`
+- and on the Review page double check the Name is set to "eks-terraform" and then click `Create environment`
 
 ----
 

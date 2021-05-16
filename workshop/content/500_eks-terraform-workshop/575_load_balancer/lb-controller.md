@@ -11,7 +11,7 @@ weight: 576
 cd ~/environment/tfekscode/lb2
 ```
 
-Initialze Terraform:
+Initialize Terraform:
 
 ```bash
 terraform init
@@ -390,7 +390,7 @@ State path: terraform.tfstate
 
 The above has:
 
-* Downlaoded the policy definition file.
+* Downloaded the policy definition file.
 * Created a Load Balancer policy using the file.
 * Started the post-policy.sh shell script which:
   * Downloads and creates the Custom Resource Definition extension.

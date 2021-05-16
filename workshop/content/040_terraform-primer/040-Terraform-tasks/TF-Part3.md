@@ -19,11 +19,11 @@ Change directory to tflab2
 cd ~/environment/tfekscode/primer/tflab2
 ```
 
-Now take some time to look through the varaious terraform files that have been provided
+Now take some time to look through the various terraform files that have been provided
 
 ### Terraform variables
 
-look at the variables.tf file contins the following:
+look at the variables.tf file it contains the following:
 
 ```
 variable "mycount" {
@@ -49,7 +49,7 @@ variable "aws_cidr" {
 
 * The "mycount" variable controls how many resources of a given type that reference it are deployed using the special "count" variable (see later)
 
-* The variable aws_vpc is a list of strings that will be used to name your VPC's
+* The variable aws_vpc is a list of strings that will be used to name your VPCs.
 
 * The variable aws_cidr is a "mapping" that uses the vpc name as defined in the variable aws_vpc to pick up an associated CIDR range
 
@@ -78,7 +78,7 @@ resource "aws_vpc" "VPC" {
 
 *  **cidr_block = lookup(var.aws_cidr, var.aws_vpc[count.index])**  - This is saying look into our map "var.aws_cidr" - use the index value "var.aws_vpc"  using the Nth value in the aws_vpc list - where N = the current value of count
 
-Using variables like this enables us to predefine VPC names and CIDR's in advance. And check them into source control systems (guthub, gitlab etc). Something we will do later.
+Using variables like this enables us to predefine VPC names and CIDR's in advance. And check them into source control systems (github, gitlab etc). Something we will do later.
 
 
 ### Other Terraform functions
@@ -87,19 +87,19 @@ Another useful technique is to use the Terraform "format" directive to construct
 
 in the file subnets.tf we see the line:
 
-* **cidr_block= format("10.%s.1.0/24", count.index + 1)**  - The %s in the format statemant means "substitite a variable here as a string" - in this case we use the current value of count plus one (as computers start counting at 0 - be we humans like ot start counting at 1)
+* **cidr_block= format("10.%s.1.0/24", count.index + 1)**  - The %s in the format statement means "substitute a variable here as a string" - in this case we use the current value of count plus one (as computers start counting at 0 - be we humans like ot start counting at 1)
 
 Also notice in this file how the VPC we just created with the vpc.tf file is referenced:
 
-* **vpc_id = aws_vpc.VPC[count.index].id** - the "VPC" structure is now indexed using "count". As our vpc.tf file is using the count variable to iterate and potentially create multiple VPC's they now are referenced as an Array.
+* **vpc_id = aws_vpc.VPC[count.index].id** - the "VPC" structure is now indexed using "count". As our vpc.tf file is using the count variable to iterate and potentially create multiple VPCs they now are referenced as an Array.
 
 ----
 
 
 
-### Understanding order and dependancies
+### Understanding order and dependencies
 
-One final thing to appreciate is that resources have dependancies. This is automatically handled for you by Terraform, but when reading Terraform code it's important to read things in the right order:
+One final thing to appreciate is that resources have dependencies. This is automatically handled for you by Terraform, but when reading Terraform code it's important to read things in the right order:
 
 * aws.tf - Specifies how we connect to Terraform , where the credentials are - and optionally where to store the state file (we are using the default - the local directory)
 * variables.tf - Defines the variables our terraform code will use
@@ -111,7 +111,7 @@ One final thing to appreciate is that resources have dependancies. This is autom
 .. and so on...
 
 Finally
-* instance.tf - has the most dependancies and thus is one of the last resources to be created.
+* instance.tf - has the most dependencies and thus is one of the last resources to be created.
 
 ----
 

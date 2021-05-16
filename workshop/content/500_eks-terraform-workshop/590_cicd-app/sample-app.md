@@ -97,7 +97,7 @@ deployment.apps/deployment-2048   2/2     2            2           55s   app-204
 
 **Note that**:
 
-* The pods are depoyed to a 100.64.x.x. address.
+* The pods are deployed to a 100.64.x.x. address.
 * The service is exposing port 80.
 * The deployment is referencing a private ECR repository belonging to your account. (see the IMAGES section of thr deployment output)
 
@@ -199,7 +199,7 @@ curl $ALB:8080
 
 Interrupt the port forwarding with ctrl-c if necessary.
 
-**The following destroy operaton make take up to 12 minutes as it deletes the ingress and ALB**
+**The following destroy operation make take up to 12 minutes as it deletes the ingress and ALB**
 
 ```bash
 terraform destroy -auto-approve

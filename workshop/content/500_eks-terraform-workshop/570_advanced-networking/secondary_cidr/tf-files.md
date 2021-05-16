@@ -143,7 +143,7 @@ echo "done"
 
 This script:
 
-* Constructs Custom Resource Definition configuration files with the correct security groups and subnets for each AWS Availaability Zone .
+* Constructs Custom Resource Definition configuration files with the correct security groups and subnets for each AWS Availability Zone .
 * Apply the above configuration.
 * Annotates each worker node in the node group with an annotation to link to the correct configuration.
 
@@ -159,7 +159,7 @@ sub3=$(echo $6)
 CLUSTER=$(echo $7)
 kubectl get crd
 # get the SG's
-# get a list of the insytances in the node group
+# get a list of the instances in the node group
 INSTANCE_IDS=(`aws ec2 describe-instances --query 'Reservations[*].Instances[*].InstanceId' --filters "Name=tag-key,Values=eks:nodegroup-name" "Name=tag-value,Values=ng1-mycluster1" "Name=instance-state-name,Values=running" --output text`)
 # extract the security groups
 for i in "${INSTANCE_IDS[0]}"

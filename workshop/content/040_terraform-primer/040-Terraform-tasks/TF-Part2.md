@@ -79,7 +79,7 @@ Notice two thing about this file:
 
 1. It contain the definition for two AWS resources (two subnets) - Is this a good idea, having lots of Terraform resources in one file ?
 
-2. Note how "vpc_id" is defined, it refers to an existing resources attribute (its "id") be referencing it's full terrform name "aws_vpc.vpc-10-1.id". 
+2. Note how "vpc_id" is defined, it refers to an existing resources attribute (the "id") be referencing it's full terraform name "aws_vpc.vpc-10-1.id". 
    
 The name aws_vpc.vpc-10-1.id came from your own definition of the VPC - look at the first line in the file vpc-10-1.tf
 

@@ -21,7 +21,7 @@ This diagram shows the EKS VPC and CI/CD VPC we will build in this section:
 cd ~/environment/tfekscode/net 
 ```
 
-Initialze Terraform
+Initialize Terraform:
 
 ```
 terraform init
@@ -110,7 +110,7 @@ You can see from the plan the following resources will be created - open the cor
 * Various VPE Endpoints (__vpce.tf__).
 * Subnets (**subnets-eks.tf**).
 * Route Tables (**aws_route_table__rtb-*.tf**).
-* Route Table Assciations (**aws_route_table_association__rtbassoc*.tf**).
+* Route Table Associations (**aws_route_table_association__rtbassoc*.tf**).
 * Security Groups (**aws_security_group__allnodes-sg.tf** & **aws_security_group__cluster-sg.tf**).
 * NAT Gateway (**aws_nat_gateway__eks-cicd.tf**).
 

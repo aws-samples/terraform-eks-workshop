@@ -14,11 +14,11 @@ weight: 525
 
 ### aws.tf
 
-This specifices the Terraform version requirements, the AWS region and profile from variables, and the AWS credentials from a local file if present.
+This specifies the Terraform version requirements, the AWS region and profile from variables, and the AWS credentials from a local file if present.
 
 Look at the contents of the file aws.tf - this file is specifying to Terraform:
 
-- Which version of Terraform should be used **required_version = "~> 0.14.3"**.
+- Which version of Terraform should be used **required_version = "~> 0.15.3"**.
 - Where the AWS, null and external "providers" come from and the version t0 use.
 - And for the AWS provider itself, which region to use and where to get the AWS login credentials.
 
@@ -27,7 +27,7 @@ Look at the contents of the file aws.tf - this file is specifying to Terraform:
 
 ```bash
 terraform {
-  required_version = "~> 0.14.3"
+  required_version = "~> 0.15.3"
   required_providers {
     aws = {
     source = "hashicorp/aws"
@@ -66,7 +66,7 @@ provider "external" {}
 
 ### vars-dynamodb.tf
 
-This file defines some varaibles with values for the 7x DynamoDB tables.
+This file defines some variables with values for the 7x DynamoDB tables.
 We use 7 tables to help lock the 7x state files that are used for the different stages/sections of our infrastructure build.
 
 {{%expand "Expand here to see the code" %}}
@@ -120,7 +120,7 @@ variable "table_name_eks-cidr" {
 
 ### vars-main.tf
 
-Some other general varables are set in this file: the region, default AWS profile name, the EKS cluster name and a string map of the 7 stages in the build. 
+Some other general variables are set in this file: the region, default AWS profile name, the EKS cluster name and a string map of the 7 stages in the build. 
 
 
 {{%expand "Expand here to see the code" %}}
@@ -192,7 +192,7 @@ resource "aws_dynamodb_table" "terraform_locks" {
 
 This script simply returns a json formatted unique bucket name, the bucket wil be used to store the Terraform state files. This script is started by the  data "external" "bucket_name" resource in the s3-bucket.tf file (see later).
 
-The only output this script is allowd to produce is a valid JSON formatted string. This is done in the last line of the code by the jq utility **jq -n --arg bn "$BUCKET_NAME" '{"Name":$bn}'**.
+The only output this script is allowed to produce is a valid JSON formatted string. This is done in the last line of the code by the jq utility **jq -n --arg bn "$BUCKET_NAME" '{"Name":$bn}'**.
 
 {{%expand "Expand here to see the code" %}}
 ```bash
@@ -293,10 +293,10 @@ provisioner "local-exec" {
 
 ### gen-backend.sh
 
-This script generates these terraform files for use in the other 7 sections of the Terraform build of our EKS infrstructure:
+This script generates these terraform files for use in the other 7 sections of the Terraform build of our EKS infrastructure:
 
 * generated/backend-{section}.tf   *(For each section this defines where our Terraform state file and DynamoDB lock table is located)*
-* generated/remote-{section}.tf *(This allows us to access output variables from other sections, helping to ensure 7x independant infrastructure build tasks can be performed)* 
+* generated/remote-{section}.tf *(This allows us to access output variables from other sections, helping to ensure 7x independent infrastructure build tasks can be performed)* 
 * var-dynamodb.tf and var.main.tf are also copied to each of the sections.
 * For the sample application and the optional extra activities - a local state file is configured see **aws.tf** this is very similar to what was used for the Terraform primer lab.
 
@@ -334,7 +334,7 @@ do
     # write out the backend config 
     printf "" > $of
     printf "terraform {\n" >> $of
-    printf "required_version = \"~> 0.14.3\"\n" >> $of
+    printf "required_version = \"~> 0.15.3\"\n" >> $of
     printf "required_providers {\n" >> $of
     printf "  aws = {\n" >> $of
     printf "   source = \"hashicorp/aws\"\n" >> $of

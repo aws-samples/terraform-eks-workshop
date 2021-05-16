@@ -19,7 +19,7 @@ For a discussion of other benefits see [here:](https://registry.terraform.io/pro
 cd ~/environment/tfekscode/sampleapp
 ```
 
-Initialise Terraform:
+Initialize Terraform:
 
 ```bash
 terraform init
@@ -586,7 +586,7 @@ game-2048     deployment.apps/deployment-2048                4/4     4          
 
 Note that:
 
-* The pods are depoyed to  100.64.x.x addresses
+* The pods are deployed to  100.64.x.x addresses
 * The service is exposing port 80
 * The deployment is referencing a private ECR repository belonging to your account
 
@@ -695,7 +695,7 @@ Use terraform to delete our sample application:
 terraform destroy -auto-approve
 ```
 
-Note the namespace takes several minutes to delete as it waits for the ingress reource to be deleted.
+Note the namespace takes several minutes to delete as it waits for the ingress resource to be deleted.
 
 {{< output >}}
 null_resource.cleanup: Destroying... [id=9012327125218962041]

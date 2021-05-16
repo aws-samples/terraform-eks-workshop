@@ -206,7 +206,7 @@ You can see from the plan the following resources will be created
 
 * An EKS Cluster
 * Configure the cluster with an OIDC provider and add support for ISRA (IAM Roles for Service Accounts)
-* A null resource which runs a small script to test conectivity to EKS with nmap and write the local .kubeconfig file
+* A null resource which runs a small script to test connectivity to EKS with nmap and write the local .kubeconfig file
   
 
 Build the environment:

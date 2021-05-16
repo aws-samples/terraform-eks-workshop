@@ -54,7 +54,7 @@ Two data resources are specified that return the current AWS region and account 
 **data "aws_region" "current" {}**
 **data "aws_caller_identity" "current" {}**
 
-These data resources are then used to construct a string for the image loaction.
+These data resources are then used to construct a string for the image location.
 
 **image = format("%s.dkr.ecr.%s.amazonaws.com/sample-app", data.aws_caller_identity.current.account_id, data.aws_region.current.name)**
 
@@ -160,7 +160,7 @@ resource "kubernetes_service" "game-2048__service-2048" {
 
 ### sampleapp-ingress.tf
 
-Define the ingress resource - this creates a AWS Aapplication Load Balancer via the previously installed aws-load-balancer-controller.
+Define the ingress resource - this creates a AWS Application Load Balancer via the previously installed aws-load-balancer-controller.
 
 Note how multiple annotations are passed, including the listener port 8080.
 

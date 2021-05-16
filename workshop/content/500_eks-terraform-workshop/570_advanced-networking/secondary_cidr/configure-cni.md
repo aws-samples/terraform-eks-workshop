@@ -66,7 +66,7 @@ To perform exactly these actions, run the following command to apply:
 ----
 
 
-## Build the envornment
+## Build the environment
 
 
 This step will take several minutes -  the null_resource starts two scripts:
@@ -82,7 +82,7 @@ kubectl set env ds aws-node -n kube-system AWS_VPC_K8S_CNI_CUSTOM_NETWORK_CFG=tr
 
 and then has a loop to terminate (& restart via the Auto-scaling group) each node in the nodegroup ng1-mycluster1 one at a time. By doing this:
 
-* New ENI interfaces are attached to the restarted instances - each with the customised CNI option enabled. 
+* New ENI interfaces are attached to the restarted instances - each with the customized CNI option enabled. 
 
 
 

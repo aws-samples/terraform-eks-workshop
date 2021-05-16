@@ -5,13 +5,13 @@ weight: 583
 ---
 
 
-In this chapter you will deploy two sample applications to separeate node groups 
+In this chapter you will deploy two sample applications to separate node groups 
 
 ```bash
 cd ~/environment/tfekscode/extra/sampleapp2
 ```
 
-Initialise Terraform - note in the output that the **kubernetes** provider is also installed
+Initialize Terraform - note in the output that the **kubernetes** provider is also installed
 ```bash
 terraform init
 ```
@@ -1002,12 +1002,12 @@ game2-2048    deployment.apps/deployment-2048-ng2            2/2     2          
 
 Note from the output that:
 
-* The pods are depoyed to  110.64.x.x (node group 1) and 10.0.x.x addresses (node group 2).
+* The pods are deployed to  110.64.x.x (node group 1) and 10.0.x.x addresses (node group 2).
 * The services are exposing port 80.
 * The deployment is referencing a private ECR repository belonging to your account.
 
 
-**If you see pods aparently stuck in "ContainerCreating" mode for a minute or more try the following:**
+**If you see pods apparently stuck in "ContainerCreating" mode for a minute or more try the following:**
 
 
 {{%expand "Expand here to see the fix" %}}

@@ -95,7 +95,7 @@ This step will take several minutes -  the null_resource starts a script:
 
 ### annotate-nodes.sh
 
-This script generates and applys a per zone configuration for the ENIConfig Custom Resource Definition and then annotates the appropriate node in the nodegroup ng1-mycluster1.
+This script generates and applies a per zone configuration for the ENIConfig Custom Resource Definition and then annotates the appropriate node in the nodegroup ng1-mycluster1.
 
 
 Build the environment:

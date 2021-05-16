@@ -13,7 +13,7 @@ weight: 562
 cd ~/environment/tfekscode/nodeg
 ```
 
-Initialise Terraform:
+Initialize Terraform:
 
 ```bash
 terraform init
@@ -107,7 +107,7 @@ Terraform will perform the following actions:
       + key_name               = "eksworkshop"
       + latest_version         = (known after apply)
       + name                   = "at-lt-mycluster1-ng1"
-      + user_data              = "TUlNRS1WZ  ** TRINCATED ** 5EQVJZPT0tLQo="
+      + user_data              = "TUlNRS1WZ  ** TRUNCATED ** 5EQVJZPT0tLQo="
       + vpc_security_group_ids = [
           + "sg-09ab0e693218b3c7f",
         ]
@@ -189,7 +189,7 @@ Our user_data.tf resource boot strapped our node into the cluster and installed 
 
 You can check the SSM agent has worked by looking in the console for 
 
-`Systems Manaager`  then `Fleet Manager`
+`Systems Manager`  then `Fleet Manager`
 
 You should see the two worker node instances listed, as well as your Cloud9 IDE instance.
 

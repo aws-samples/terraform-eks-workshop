@@ -23,7 +23,7 @@ cd ~/environment/tfekscode/primer/tflab1
 
 Look at the contents of the file aws.tf - this file is specifying to Terraform:
 
-- Which version of Terraform should be used **required_version = "~> 0.14.3"**
+- Which version of Terraform should be used **required_version = "~> 0.15.3"**
 - Where the AWS "provider" comes from and it's version
 - And for the AWS provider itself which region to use and where to get the AWS login credentials
 
@@ -32,12 +32,11 @@ more aws.tf
 ```
 ```
 terraform {
-  required_version = "~> 0.14.3"
+  required_version = "~> 0.15.3"
   required_providers {
     aws = {
     source = "hashicorp/aws"
-    #  Allow any 3.22+  version of the AWS provider
-    version = "~> 3.22"
+    version = "= 3.39"
     }
   }
 }
@@ -55,6 +54,8 @@ provider "aws" {
 ----
 
 ## Initialize Terraform
+
+In the first step we initialize Terraform, most Terraform commands will give output telling you what they have done. In this case we will have some local files placed in a hidden directory .`terraform` which Terraform uses for your subsequent Terraform operations. This step is always required.
 
 ```bash
 terraform init
@@ -122,12 +123,14 @@ https://www.terraform.io/docs/providers/aws/r/vpc.html
 
 ----
 
-Next run these commands which will format the terraform code, validate it's syntax and check it for security issues
+Next run these commands which will format the terraform code, validate it's syntax:
 
 
 ```
 terraform fmt
 ```
+
+*Note this command only produces output if it finds any Terraform file that needed to be re-formatted*
 
 ```
 terraform validate
@@ -241,7 +244,7 @@ look in the directory tflab1 for this file
 ls terraform.tfstate
 ```
 
-You can list the contents of ther local state try using these commands:
+You can list the contents of the local state. Try using these commands:
 
 ```
 terraform state list
@@ -298,7 +301,7 @@ Try making some changes and see what happens
 
 In the file vpc-10-1.tf 
 
-change enabe_dns_hostname to be false
+change enable_dns_hostname to be false
 
 :bulb: **Remember to Save the file**
 

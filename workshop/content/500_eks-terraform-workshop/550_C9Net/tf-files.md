@@ -16,7 +16,7 @@ This specifies the location of the backend Terraform state file on S3 and the dy
 {{%expand "Expand here to see the code" %}}
 ```bash
 terraform {
-required_version = "~> 0.14.3"
+required_version = "~> 0.15.3"
 required_providers {
   aws = {
    source = "hashicorp/aws"
@@ -74,7 +74,7 @@ key = "terraform/terraform_locks_net.tfstate"
 
 Next we gather some existing resources using Terraform data resources.
 
-Find the default & cicd VPC's and make it availabe (read only) as a Terraform *data* resource
+Find the default & cicd VPC's and make it available (read only) as a Terraform *data* resource
 
 ### data-defvpc.tf & data-cicdvpc.tf
 
@@ -209,7 +209,7 @@ resource "aws_route" "rt-def" {
 ---
 
 Next add to the EKS's route tables a route to the Default VPC's CIDR block using the peering connection id as the destination.
-Note withon hete the use of the previously obtained data values: **data.aws_vpc.vpc-default.cidr_block**  and the remote_state value **data.terraform_remote_state.net.outputs.rtb-priv1** for the EKS VPC's routing table.
+Note within the use of the previously obtained data values: **data.aws_vpc.vpc-default.cidr_block**  and the remote_state value **data.terraform_remote_state.net.outputs.rtb-priv1** for the EKS VPC's routing table.
 
 ### eks-route-add.tf
 
@@ -296,7 +296,7 @@ resource "aws_security_group_rule" "eks-node-egress" {
 --- 
 
 
-Next we add some rules to the Ckoud9 IDE Security Group that allows incoming traffic from the EKS worker nodes CIDR blocks for port 22 and 443.
+Next we add some rules to the Cloud9 IDE Security Group that allows incoming traffic from the EKS worker nodes CIDR blocks for port 22 and 443.
 
 ### sg-rule-def.tf
 

@@ -28,7 +28,7 @@ You will perform each of these stages in turn as you progress through the worksh
 
 #### Initial setup for Terraform
 
-In this stage we create some pre-requsite S3 buckets and dynamodDB tables that will be used to centrally hold the Terraform "state" and control locking of that state:
+In this stage we create some pre-requisite S3 buckets and dynamodDB tables that will be used to centrally hold the Terraform "state" and control locking of that state:
 
 ![tf-state](/images/andyt/tf-state-aws.jpg)
 
@@ -44,7 +44,7 @@ In the next stage we create the required IAM roles and policies for EKS.
 
 #### Connecting the Cloud9 IDE to the EKS network
 
-This stage inter-connects the Cloud9 IDE & CICD VPC with the provate EKS VPC. 
+This stage inter-connects the Cloud9 IDE & CICD VPC with the private EKS VPC. 
 
 ![tf-state](/images/andyt/c9net-build.png)
 
@@ -61,15 +61,15 @@ This stage deploys the EKS control plane.
 
 ![tf-state](/images/andyt/cluster-build.jpg)
 
-#### Adding customised managed worker nodes
+#### Adding customized managed worker nodes
 
-In this stage we deploy a private node group using a launch template, a specific AMI and a customised user data to install the SSM agent.
+In this stage we deploy a private node group using a launch template, a specific AMI and a customized user data to install the SSM agent.
 
 ![tf-state](/images/andyt/nodeg-build.jpg)
 
 #### Configure the worker nodes to use advanced networking
 
-This stage changes the worker nodes int he node group so this will use the seondary CIDR address range for pods running in the EKS cluster.
+This stage changes the worker nodes int he node group so this will use the secondary CIDR address range for pods running in the EKS cluster.
 
 ![tf-state](/images/andyt/adv-net-nodes.png)
 

@@ -34,7 +34,7 @@ To set your display email run "git config --global user.email YOUR_EMAIL_ADDRESS
 
 #### Install the tools
 
-Clone the workshop repo - and use a helper script to setup the workshop tools: 
+Clone the workshop repo and use a helper script to setup the workshop tools: 
 
 ```bash
 cd ~/environment
@@ -84,7 +84,7 @@ ACCOUNT_ID is 123456789012
 ./check.sh
 ```
 
-Provided the Cloud9 workspace was setup as described the following script should show 3x PASSED: messages:
+Provided the Cloud9 workspace was setup as described the following script should show 3x `PASSED:` messages:
 
 {{< output >}}
 Checking workshop setup ...
@@ -127,16 +127,14 @@ You should consider upgrading via the 'pip install --upgrade pip' command.
 
 **At this point the Cloud9 IDE will disconnect - wait 2 minutes then:**
 
-If your IDE does not automatically restart a terminal session then:
-
-Close your terminal session that is unresponsive:
+If your IDE does not automatically restart a terminal session then close your terminal session that is unresponsive:
 
 ![grey](/images/andyt/reboot-greyed.jpg)
 
 
 ![Close terminal](/images/andyt/close-term.jpg)
 
-And open a new Terminal session
+And open a new Terminal session:
 
 ![New terminal](/images/andyt/New-Term.jpg) 
 
@@ -156,7 +154,7 @@ Use the console to select the Cloud9 service
 {{% /notice %}}
 
 
-Once reconnected to a terminal you can confirm the resize of the OS disk worked with:
+Once reconnected to a terminal you can confirm the resizing of the OS disk worked with:
 
 ```bash
 df -m /
@@ -166,7 +164,7 @@ Filesystem     1M-blocks  Used Available Use% Mounted on
 /dev/xvda1         30108  9063     20948  31% /
 {{< /output >}}
 
-As above - it should show about 21,000 MB of Available storage on the / file system
+As above it should show about 21,000 MB of Available storage on the / file system
 
 ---
 

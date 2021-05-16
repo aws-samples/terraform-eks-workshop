@@ -10,15 +10,14 @@ weight: 547
 The first three files have been pre-created from the gen-backend.sh script in the tf-setup stage and have been explained in previous sections.
 
 
-
 ### backend-iam.tf
 
-This specifices the location of the backend Terraform state file on S3 and the dynamoDB table used for the state file locking. Also the Terraform version requirements, the AWS region and profile from variables, and the AWS credentials from a local file if present.
+This specifies the location of the backend Terraform state file on S3 and the dynamoDB table used for the state file locking. Also the Terraform version requirements, the AWS region and profile from variables, and the AWS credentials from a local file if present.
 
 {{%expand "Expand here to see the code" %}}
 ```bash
 terraform {
-required_version = "~> 0.14.3"
+required_version = "~> 0.15.3"
 required_providers {
   aws = {
    source = "hashicorp/aws"
@@ -49,7 +48,7 @@ profile = var.profile
 
 ### vars-dynamodb.tf
 
-This file defines some varaibles with default values for the 7x dynamoDB tables, the region and default profile name
+This file defines some variables with default values for the 7x dynamoDB tables, the region and default profile name
 
 {{%expand "Expand here to see the code" %}}
 ```bash

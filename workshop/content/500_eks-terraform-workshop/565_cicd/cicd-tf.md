@@ -4,7 +4,7 @@ date: 2018-09-18T16:01:14-05:00
 weight: 566
 ---
 
-## Create the CI/CD components: ECR, CodeCoomit, CodeBuild and CodePipeline
+## Create the CI/CD components: ECR, CodeCommit, CodeBuild and CodePipeline
 
 
 
@@ -12,7 +12,7 @@ weight: 566
 cd ~/environment/tfekscode/cicd
 ```
 
-Initialze Terraform
+Initialize Terraform
 
 ```bash
 terraform init
@@ -669,7 +669,7 @@ You can see from the plan the following resources will be created:
 
 * A CodeCommit repository
 * A CodeBuild service for running build and deploy operations
-* A CodePipeline implementationto orchastrate the triggering of the CodeBuild
+* A CodePipeline implementation to orchestrate the triggering of the CodeBuild
 * 3x private ECR repositories
 * Policies and Roles for CodePipeline and CodeBuild
 * A git user for the CodeCommit repo 
@@ -796,7 +796,7 @@ Apply complete! Resources: 19 added, 0 changed, 0 destroyed.
 
 -----
 
-Check CodeBuild is authorised to access the EKS cluster ok
+Check CodeBuild is authorized to access the EKS cluster ok
 
 ```bash
 kubectl get -n kube-system configmap/aws-auth -o yaml | grep -i codebuild

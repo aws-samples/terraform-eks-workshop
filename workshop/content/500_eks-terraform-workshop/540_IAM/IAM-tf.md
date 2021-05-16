@@ -10,7 +10,7 @@ weight: 545
 cd ~/environment/tfekscode/iam
 ```
 
-Initialze Terraform
+Initialize Terraform
 
 ```
 terraform init
