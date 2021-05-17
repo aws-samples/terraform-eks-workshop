@@ -47,11 +47,11 @@ variable "aws_cidr" {
 
 ```
 
-* The "mycount" variable controls how many resources of a given type that reference it are deployed using the special "count" variable (see later)
+* The "mycount" variable controls how many resources of a given type that reference it are deployed using the special "count" variable (see later).
 
 * The variable aws_vpc is a list of strings that will be used to name your VPCs.
 
-* The variable aws_cidr is a "mapping" that uses the vpc name as defined in the variable aws_vpc to pick up an associated CIDR range
+* The variable aws_cidr is a "mapping" that uses the vpc name as defined in the variable aws_vpc to pick up an associated CIDR range.
 
 
 Lets now look how these are utilized in our other Terraform files
@@ -101,14 +101,14 @@ Also notice in this file how the VPC we just created with the vpc.tf file is ref
 
 One final thing to appreciate is that resources have dependencies. This is automatically handled for you by Terraform, but when reading Terraform code it's important to read things in the right order:
 
-* aws.tf - Specifies how we connect to Terraform , where the credentials are - and optionally where to store the state file (we are using the default - the local directory)
-* variables.tf - Defines the variables our terraform code will use
-* data*.tf - Any existing resources we will use 
+* aws.tf - Specifies how we connect to Terraform , where the credentials are - and optionally where to store the state file (we are using the default - the local directory).
+* variables.tf - Defines the variables our terraform code will use.
+* data*.tf - Any existing resources we will use.
 * vpc.tf - an object most other things depend on in AWS.
-* subnets.tf and security groups mysg*.tf - depends on the vpc and transit gateway
-* nat_gateway.tf - depends on subnets and elastic ip
+* subnets.tf and security groups mysg*.tf - depends on the vpc.
+* nat_gateway.tf - depends on subnets and elastic ip.
 
-.. and so on...
+.. and so on ..
 
 Finally
 * instance.tf - has the most dependencies and thus is one of the last resources to be created.
@@ -150,9 +150,9 @@ It will take a few minutes for the resources to create
 
 Go to the AWS console as before and find:
 
-* The new VPC
-* New subnets
-* Observe the relevant routing table entries for the public and private subnets
+* The new VPC.
+* New subnets.
+* Observe the relevant routing table entries for the public and private subnets.
 * Is there a new instance running ?
 
 

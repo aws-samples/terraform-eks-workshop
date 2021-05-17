@@ -69,7 +69,7 @@ Initializing the backend...
 
 Initializing provider plugins...
 - Checking for available provider plugins...
-- Downloading plugin for provider "aws" (hashicorp/aws) 3.15.0...
+- Downloading plugin for provider "aws" (hashicorp/aws) 3.39.0...
 
 Terraform has been successfully initialized!
 
@@ -130,7 +130,9 @@ Next run these commands which will format the terraform code, validate it's synt
 terraform fmt
 ```
 
-*Note this command only produces output if it finds any Terraform file that needed to be re-formatted*
+*Note this command only produces output if it finds a Terraform file that needs to be reformatted.*
+
+Next validate the file contents. The validate step runs checks that verify whether a configuration is syntactically valid and internally consistent.
 
 ```
 terraform validate
@@ -139,7 +141,7 @@ Success! The configuration is valid.
 
 
 
-## Next lets "plan" our terraform infrastructure and get Terraform to tell us what it is going to do
+#### Next lets "plan" our terraform infrastructure and get Terraform to tell us what it is going to do
 
 Terraform is used in several stages, you have already completed the initialize stage.
 
@@ -209,7 +211,7 @@ Terraform uses these symbols to indicate the type of changes it will make:
 
 ----
 
-## Next lets build the VPC !
+#### Next lets build the VPC !
 
 ```
 terraform apply tfplan
@@ -233,6 +235,8 @@ State path: terraform.tfstate
 ```
 
 Return to the console - look to see if you now have a new VPC ?
+
+----
 
 ## Terraform State
 

@@ -7,7 +7,7 @@ weight: 55
 
 ## Testing using ping and other command line tools
 
-Connect to the first instance `instance-10-1-4-first` you created in vpc-10-1 using Systems Manager.
+Connect to the first instance *instance-10-1-4-first* you created in vpc-10-1 using Systems Manager:
 
 
 * Go to `AWS Systems Manager` in the AWS console

@@ -5,7 +5,7 @@ draft: false
 ---
 
 
-In this workshop we will build a private EKS cluster using Terraform, using our Cloud9 IDE as a bastion host and also create a VPC hosted CI/CD pipeline using CodeCommit, CodeBuild and CodePipeline.
+In this part of the Workshop we will build a private EKS cluster using Terraform, using our Cloud9 IDE as a bastion host. We will also create a VPC hosted CI/CD pipeline using CodeCommit, CodeBuild and CodePipeline.
 
 The following diagram pictures the end state for this workshop:
 
@@ -21,8 +21,7 @@ This can be further enhanced by provisioning an EKS cluster to operate in a priv
 
 In this section, we take a look at how to build the private EKS cluster in distinct stages designed to reflect different responsibility and minimum privilege models that are sometimes seen in large organizations.
 
-
-The build out of our private EKS Cluster is divided into these stages, each of which could be performed by a separate team.
+The build out of our private EKS Cluster is divided into the following stages, each of which could be performed by a separate team.
 
 You will perform each of these stages in turn as you progress through the workshop.
 

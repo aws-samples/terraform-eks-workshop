@@ -38,7 +38,7 @@ terraform apply tfplan
 
 ----
 
-Next we're going to create a subnet - this part also introduces an important feature in Terraform showing how it references other existing resources by name
+Next we're going to create a subnet - this part also introduces an important feature in Terraform showing how it references other existing resources by name.
 
 
 Create a new file called "subnets.tf" with the following contents:
@@ -72,8 +72,8 @@ resource "aws_subnet" "mypubsubnet" {
 }
 ```
 
-File - Save As....
-Use the file name **subnets.tf** 
+`File` - `Save As` ....
+use the file name **subnets.tf** 
 
 Notice two thing about this file:
 
@@ -137,7 +137,9 @@ And if your happy with the plan .....
 terraform apply tfplan
 ```
 
-### Now use the console to check all the resources exist
+----
+
+### Next use the console to check all the resources exist
 
 You may need to hit refresh if your console window was still open
 
@@ -147,6 +149,7 @@ Look for:
 * The new Elastic IP
 * The new Subnets
 
+----
 
 ### Having done all of that - lets destroy what we have created
 
