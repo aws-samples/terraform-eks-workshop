@@ -21,7 +21,7 @@ Optional, but useful for debugging:
 
 - Click the gear icon (in top right corner), or click to open a new tab and choose "Open Preferences"
 - Select **User settings**
-- Set **Scrollback** to 10000
+- Set **Scroll back** to 10000
 - Close the Preferences tab
 
 ---

@@ -76,6 +76,13 @@ AWS_REGION is eu-west-1
 ACCOUNT_ID is 123456789012
 {{< /output >}}
 
+
+You may see a pop up message during the tools installation that looks like this:
+
+![grey](/images/andyt/git-warning.png)
+
+You can safely ignore this and click `Don't Show Again`
+
 ---
 
 #### Check the Cloud9 IDE is setup correctly:
@@ -102,6 +109,8 @@ PASSED: Cloud9 IDE name is valid - contains eks-terraform
 cd ~/environment/tfekscode
 ./resize-osdisk.sh
 ```
+
+This is some sample output from this script **this may include some warnings/errors - these can be ignored**
 
 {{< output >}}
 Collecting boto3
@@ -149,7 +158,7 @@ Use the console to select the Cloud9 service
 ![c9attachrole](/images/andyt/OpenIDE.jpg)
 - Click **Open IDE**
       
-**Occassionally during the workshop it may be necessary to re-open the IDE using the above technique.**
+**Occasionally during the workshop it may be necessary to re-open the IDE using the above technique.**
 
 {{% /notice %}}
 
