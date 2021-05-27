@@ -48,5 +48,7 @@ Background in EKS, Terraform Kubernetes, Docker, and container workflows are not
 Cleanup sections are provided in each chapter as required. At the end of the workshop there is also a Cleanup section with a script that will delete all the workshop resources.
 
 
+----
 
+*Updated May 27th 2021*
 
