@@ -81,3 +81,13 @@ Connecting to nginx (10.100.170.156:80)
 -                    100% |**************************************************************************************|   612  0:00:00 ETA
 written to stdout
 {{< /output >}}
+
+Finally exit from the busybox container:
+
+```
+exit
+```
+
+---
+
+:white_check_mark: Proceed to the next step

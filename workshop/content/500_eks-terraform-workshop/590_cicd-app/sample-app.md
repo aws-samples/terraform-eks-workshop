@@ -10,6 +10,13 @@ In this chapter you will deploy a sample application using CodeCommit, CodePipel
 cd ~/environment/tfekscode/sampleapp
 ```
 
+{{% notice warning %}}
+Be sure you have run the `terraform destroy -auto-approve` command in the previous step before proceeding with the steps below.
+{{% /notice %}}
+
+
+
+
 Create a service credential to use with our CodeCommit git repo:
 
 ```bash

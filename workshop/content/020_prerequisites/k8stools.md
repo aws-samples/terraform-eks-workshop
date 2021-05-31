@@ -134,9 +134,11 @@ You should consider upgrading via the 'pip install --upgrade pip' command.
 {{< /output >}}
 
 
-**At this point the Cloud9 IDE will disconnect - wait 2 minutes then:**
+**At this point the Cloud9 IDE will disconnect - wait 2 minutes - then the terminal should reconnect**
 
-If your IDE does not automatically restart a terminal session then close your terminal session that is unresponsive:
+{{%expand "If your IDE does not automatically restart a terminal session expand here ......." %}}
+
+Close your terminal session that is unresponsive:
 
 ![grey](/images/andyt/reboot-greyed.jpg)
 
@@ -162,6 +164,7 @@ Use the console to select the Cloud9 service
 
 {{% /notice %}}
 
+{{%/expand %}}
 
 Once reconnected to a terminal you can confirm the resizing of the OS disk worked with:
 
