@@ -50,5 +50,15 @@ Cleanup sections are provided in each chapter as required. At the end of the wor
 
 ----
 
-*Updated June 1st 2021*
+### Source Code
+
+| Workshop | Information |
+| --- | --- |
+| **This website content** | https://github.com/aws-samples/terraform-eks-workshop |
+| **Workshop Code** | https://github.com/aws-samples/terraform-eks-code |
+
+
+----
+
+*Updated June 3rd 2021*
 

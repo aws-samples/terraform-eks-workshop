@@ -19,4 +19,4 @@ To start the workshop, follow the following instructions ...
 
 * [running the workshop on your own (in your own account)](020_prerequisites/self_paced.html)
 
-Once you have completed with either setup, continue with [**Create the Workspace**](020_prerequisites/workspace.html)
+Once you have completed with either setup, continue with [**Create a Workspace**](020_prerequisites/workspace.html)

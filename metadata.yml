@@ -21,7 +21,7 @@ services:
 #level - Approximate skill level needed for this workshop
 level: 300
 #duration - Estimated duration in minutes
-duration:  
+duration:  240
 #cost - Cost in USD. If the content is offered without cost, enter 0
 cost: 5
 #author - Amazon alias of the primary author of the content

@@ -16,7 +16,6 @@ enableEmoji = true
 
 
 [params]
-  editURL = "https://github.com/aws-samples/terraform-eks-workshop/edit/master/content/"
   ghrepo = "https://github.com/aws-samples/terraform-eks-workshop/"
   branch = "master"
   description = "Terraform EKS Workshop"
