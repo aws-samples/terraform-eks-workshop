@@ -22,17 +22,19 @@ The command wil create a hidden directory in your file system called ".terraform
 
 {{< output >}}
 Initializing the backend...
-
 Initializing provider plugins...
+- Finding hashicorp/kubernetes versions matching "1.13.3"...
+- Finding hashicorp/aws versions matching "3.39.0"...
 - Finding hashicorp/null versions matching "~> 3.0"...
 - Finding hashicorp/external versions matching "~> 2.0"...
-- Finding hashicorp/aws versions matching "~> 3.22"...
-- Installing hashicorp/null v3.0.0...
-- Installed hashicorp/null v3.0.0 (signed by HashiCorp)
-- Installing hashicorp/external v2.0.0...
-- Installed hashicorp/external v2.0.0 (signed by HashiCorp)
-- Installing hashicorp/aws v3.22.0...
-- Installed hashicorp/aws v3.22.0 (signed by HashiCorp)
+- Installing hashicorp/kubernetes v1.13.3...
+- Installed hashicorp/kubernetes v1.13.3 (signed by HashiCorp)
+- Installing hashicorp/aws v3.39.0...
+- Installed hashicorp/aws v3.39.0 (signed by HashiCorp)
+- Installing hashicorp/null v3.1.0...
+- Installed hashicorp/null v3.1.0 (signed by HashiCorp)
+- Installing hashicorp/external v2.1.0...
+- Installed hashicorp/external v2.1.0 (signed by HashiCorp)
 
 Terraform has created a lock file .terraform.lock.hcl to record the provider
 selections it made above. Include this file in your version control repository
@@ -68,8 +70,7 @@ terraform plan -out tfplan
 ```
 
 {{< output >}}
-An execution plan has been generated and is shown below.
-Resource actions are indicated with the following symbols:
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
   + create
 
 Terraform will perform the following actions:
@@ -84,6 +85,7 @@ Terraform will perform the following actions:
       + stream_arn       = (known after apply)
       + stream_label     = (known after apply)
       + stream_view_type = (known after apply)
+      + tags_all         = (known after apply)
 
       + attribute {
           + name = "LockID"
@@ -110,6 +112,7 @@ Terraform will perform the following actions:
       + stream_arn       = (known after apply)
       + stream_label     = (known after apply)
       + stream_view_type = (known after apply)
+      + tags_all         = (known after apply)
 
       + attribute {
           + name = "LockID"
@@ -136,6 +139,7 @@ Terraform will perform the following actions:
       + stream_arn       = (known after apply)
       + stream_label     = (known after apply)
       + stream_view_type = (known after apply)
+      + tags_all         = (known after apply)
 
       + attribute {
           + name = "LockID"
@@ -162,6 +166,7 @@ Terraform will perform the following actions:
       + stream_arn       = (known after apply)
       + stream_label     = (known after apply)
       + stream_view_type = (known after apply)
+      + tags_all         = (known after apply)
 
       + attribute {
           + name = "LockID"
@@ -188,6 +193,7 @@ Terraform will perform the following actions:
       + stream_arn       = (known after apply)
       + stream_label     = (known after apply)
       + stream_view_type = (known after apply)
+      + tags_all         = (known after apply)
 
       + attribute {
           + name = "LockID"
@@ -214,6 +220,7 @@ Terraform will perform the following actions:
       + stream_arn       = (known after apply)
       + stream_label     = (known after apply)
       + stream_view_type = (known after apply)
+      + tags_all         = (known after apply)
 
       + attribute {
           + name = "LockID"
@@ -240,6 +247,34 @@ Terraform will perform the following actions:
       + stream_arn       = (known after apply)
       + stream_label     = (known after apply)
       + stream_view_type = (known after apply)
+      + tags_all         = (known after apply)
+
+      + attribute {
+          + name = "LockID"
+          + type = "S"
+        }
+
+      + point_in_time_recovery {
+          + enabled = (known after apply)
+        }
+
+      + server_side_encryption {
+          + enabled     = (known after apply)
+          + kms_key_arn = (known after apply)
+        }
+    }
+
+  # aws_dynamodb_table.terraform_locks[7] will be created
+  + resource "aws_dynamodb_table" "terraform_locks" {
+      + arn              = (known after apply)
+      + billing_mode     = "PAY_PER_REQUEST"
+      + hash_key         = "LockID"
+      + id               = (known after apply)
+      + name             = "terraform_locks_sampleapp"
+      + stream_arn       = (known after apply)
+      + stream_label     = (known after apply)
+      + stream_view_type = (known after apply)
+      + tags_all         = (known after apply)
 
       + attribute {
           + name = "LockID"
@@ -261,7 +296,7 @@ Terraform will perform the following actions:
       + acceleration_status         = (known after apply)
       + acl                         = "private"
       + arn                         = (known after apply)
-      + bucket                      = "terraform-state-ip-172-31-2-146"
+      + bucket                      = "tf-state-ip-172-31-30-219-1623005594233019516"
       + bucket_domain_name          = (known after apply)
       + bucket_regional_domain_name = (known after apply)
       + force_destroy               = true
@@ -269,6 +304,7 @@ Terraform will perform the following actions:
       + id                          = (known after apply)
       + region                      = (known after apply)
       + request_payer               = (known after apply)
+      + tags_all                    = (known after apply)
       + website_domain              = (known after apply)
       + website_endpoint            = (known after apply)
 
@@ -298,30 +334,27 @@ Terraform will perform the following actions:
       + triggers = (known after apply)
     }
 
-Plan: 10 to add, 0 to change, 0 to destroy.
+Plan: 11 to add, 0 to change, 0 to destroy.
 
 Changes to Outputs:
-  + Name                         = "terraform-state-ip-172-31-2-146"
-  + dynamodb_table_name_c9net    = "terraform_locks_c9net"
-  + dynamodb_table_name_cicd     = "terraform_locks_cicd"
-  + dynamodb_table_name_cluster  = "terraform_locks_cluster"
-  + dynamodb_table_name_eks-cidr = "terraform_locks_eks-cidr"
-  + dynamodb_table_name_iam      = "terraform_locks_iam"
-  + dynamodb_table_name_net      = "terraform_locks_net"
-  + dynamodb_table_name_nodeg    = "terraform_locks_nodeg"
-  + region                       = [
+  + Name                          = "tf-state-ip-172-31-30-219-1623005594233019516"
+  + dynamodb_table_name_c9net     = "terraform_locks_c9net"
+  + dynamodb_table_name_cicd      = "terraform_locks_cicd"
+  + dynamodb_table_name_cluster   = "terraform_locks_cluster"
+  + dynamodb_table_name_eks-cidr  = "terraform_locks_eks-cidr"
+  + dynamodb_table_name_iam       = "terraform_locks_iam"
+  + dynamodb_table_name_net       = "terraform_locks_net"
+  + dynamodb_table_name_nodeg     = "terraform_locks_nodeg"
+  + dynamodb_table_name_sampleapp = "terraform_locks_sampleapp"
+  + region                        = [
       + (known after apply),
     ]
-  + s3_bucket                    = [
-      + "terraform-state-ip-172-31-2-146",
+  + s3_bucket                     = [
+      + "tf-state-ip-172-31-30-219-1623005594233019516",
     ]
 
-------------------------------------------------------------------------
-
-This plan was saved to: tfplan
-
-To perform exactly these actions, run the following command to apply:
-    terraform apply "tfplan"
+────────────────────────────────────────────────────────────────────────
+Saved the plan to: tfplan
 {{< /output >}}
 
 ----
@@ -334,64 +367,62 @@ terraform apply tfplan
 
 {{< output >}}
 aws_s3_bucket.terraform_state: Creating...
-aws_s3_bucket.terraform_state: Creation complete after 2s [id=terraform-state-ip-172-31-2-146]
+aws_s3_bucket.terraform_state: Creation complete after 1s [id=tf-state-ip-172-31-30-219-1623005594233019516]
 aws_dynamodb_table.terraform_locks[3]: Creating...
-aws_dynamodb_table.terraform_locks[2]: Creating...
 aws_dynamodb_table.terraform_locks[5]: Creating...
-aws_dynamodb_table.terraform_locks[0]: Creating...
 aws_dynamodb_table.terraform_locks[4]: Creating...
-aws_dynamodb_table.terraform_locks[6]: Creating...
+aws_dynamodb_table.terraform_locks[2]: Creating...
 aws_dynamodb_table.terraform_locks[1]: Creating...
-aws_dynamodb_table.terraform_locks[4]: Creation complete after 7s [id=terraform_locks_nodeg]
+aws_dynamodb_table.terraform_locks[0]: Creating...
+aws_dynamodb_table.terraform_locks[6]: Creating...
+aws_dynamodb_table.terraform_locks[7]: Creating...
 aws_dynamodb_table.terraform_locks[6]: Creation complete after 7s [id=terraform_locks_eks-cidr]
-aws_dynamodb_table.terraform_locks[0]: Creation complete after 7s [id=terraform_locks_net]
-aws_dynamodb_table.terraform_locks[5]: Creation complete after 8s [id=terraform_locks_cicd]
-aws_dynamodb_table.terraform_locks[3]: Creation complete after 8s [id=terraform_locks_cluster]
-aws_dynamodb_table.terraform_locks[1]: Creation complete after 8s [id=terraform_locks_iam]
-aws_dynamodb_table.terraform_locks[2]: Creation complete after 9s [id=terraform_locks_c9net]
+aws_dynamodb_table.terraform_locks[5]: Creation complete after 7s [id=terraform_locks_cicd]
+aws_dynamodb_table.terraform_locks[7]: Creation complete after 7s [id=terraform_locks_sampleapp]
+aws_dynamodb_table.terraform_locks[1]: Creation complete after 7s [id=terraform_locks_iam]
+aws_dynamodb_table.terraform_locks[4]: Creation complete after 7s [id=terraform_locks_nodeg]
+aws_dynamodb_table.terraform_locks[0]: Creation complete after 8s [id=terraform_locks_net]
+aws_dynamodb_table.terraform_locks[2]: Creation complete after 8s [id=terraform_locks_c9net]
+aws_dynamodb_table.terraform_locks[3]: Creation complete after 10s [id=terraform_locks_cluster]
 null_resource.sleep: Creating...
 null_resource.sleep: Provisioning with 'local-exec'...
 null_resource.sleep (local-exec): Executing: ["/bin/sh" "-c" "sleep 5"]
-null_resource.sleep: Creation complete after 5s [id=3192253516749502333]
+null_resource.sleep: Creation complete after 5s [id=3950971116926504560]
 null_resource.gen_backend: Creating...
 null_resource.gen_backend: Provisioning with 'local-exec'...
 null_resource.gen_backend (local-exec): Executing: ["/bin/sh" "-c" "./gen-backend.sh"]
 null_resource.gen_backend (local-exec): region=eu-west-1
-null_resource.gen_backend (local-exec): terraform-state-ip-172-31-2-146 terraform_locks_net
+null_resource.gen_backend (local-exec): tf-state-ip-172-31-30-219-1623005594233019516 terraform_locks_net
 null_resource.gen_backend (local-exec): ‘generated/backend-net.tf’ -> ‘../net/backend-net.tf’
-null_resource.gen_backend (local-exec): terraform-state-ip-172-31-2-146 terraform_locks_iam
+null_resource.gen_backend (local-exec): tf-state-ip-172-31-30-219-1623005594233019516 terraform_locks_iam
 null_resource.gen_backend (local-exec): ‘generated/backend-iam.tf’ -> ‘../iam/backend-iam.tf’
 null_resource.gen_backend: Still creating... [10s elapsed]
-null_resource.gen_backend (local-exec): terraform-state-ip-172-31-2-146 terraform_locks_c9net
+null_resource.gen_backend (local-exec): tf-state-ip-172-31-30-219-1623005594233019516 terraform_locks_c9net
 null_resource.gen_backend (local-exec): ‘generated/backend-c9net.tf’ -> ‘../c9net/backend-c9net.tf’
-null_resource.gen_backend (local-exec): terraform-state-ip-172-31-2-146 terraform_locks_cicd
+null_resource.gen_backend (local-exec): tf-state-ip-172-31-30-219-1623005594233019516 terraform_locks_cicd
 null_resource.gen_backend (local-exec): ‘generated/backend-cicd.tf’ -> ‘../cicd/backend-cicd.tf’
-null_resource.gen_backend (local-exec): terraform-state-ip-172-31-2-146 terraform_locks_cluster
+null_resource.gen_backend (local-exec): tf-state-ip-172-31-30-219-1623005594233019516 terraform_locks_cluster
 null_resource.gen_backend (local-exec): ‘generated/backend-cluster.tf’ -> ‘../cluster/backend-cluster.tf’
-null_resource.gen_backend (local-exec): terraform-state-ip-172-31-2-146 terraform_locks_nodeg
+null_resource.gen_backend (local-exec): tf-state-ip-172-31-30-219-1623005594233019516 terraform_locks_nodeg
 null_resource.gen_backend (local-exec): ‘generated/backend-nodeg.tf’ -> ‘../nodeg/backend-nodeg.tf’
-null_resource.gen_backend (local-exec): terraform-state-ip-172-31-2-146 terraform_locks_eks-cidr
-null_resource.gen_backend (local-exec): ‘generated/backend-eks-cidr.tf’ -> ‘../eks-cidr/backend-eks-cidr.tf’
-null_resource.gen_backend (local-exec): **** REMOTE ****
-null_resource.gen_backend (local-exec): terraform-state-ip-172-31-2-146 terraform_locks_net
 null_resource.gen_backend: Still creating... [20s elapsed]
-null_resource.gen_backend (local-exec): terraform-state-ip-172-31-2-146 terraform_locks_iam
-null_resource.gen_backend (local-exec): terraform-state-ip-172-31-2-146 terraform_locks_c9net
-null_resource.gen_backend (local-exec): terraform-state-ip-172-31-2-146 terraform_locks_cluster
-null_resource.gen_backend: Creation complete after 23s [id=6083657761230822814]
+null_resource.gen_backend (local-exec): tf-state-ip-172-31-30-219-1623005594233019516 terraform_locks_eks-cidr
+null_resource.gen_backend (local-exec): ‘generated/backend-eks-cidr.tf’ -> ‘../eks-cidr/backend-eks-cidr.tf’
+null_resource.gen_backend (local-exec): tf-state-ip-172-31-30-219-1623005594233019516 terraform_locks_sampleapp
+null_resource.gen_backend (local-exec): ‘generated/backend-sampleapp.tf’ -> ‘../sampleapp/backend-sampleapp.tf’
+null_resource.gen_backend (local-exec): **** REMOTE ****
+null_resource.gen_backend (local-exec): tf-state-ip-172-31-30-219-1623005594233019516 terraform_locks_net
+null_resource.gen_backend (local-exec): tf-state-ip-172-31-30-219-1623005594233019516 terraform_locks_iam
+null_resource.gen_backend (local-exec): tf-state-ip-172-31-30-219-1623005594233019516 terraform_locks_c9net
+null_resource.gen_backend: Still creating... [30s elapsed]
+null_resource.gen_backend (local-exec): tf-state-ip-172-31-30-219-1623005594233019516 terraform_locks_cluster
+null_resource.gen_backend: Creation complete after 30s [id=3958367818616499141]
 
-Apply complete! Resources: 10 added, 0 changed, 0 destroyed.
-
-The state of your infrastructure has been saved to the path
-below. This state is required to modify and destroy your
-infrastructure, so keep it safe. To inspect the complete state
-use the `terraform show` command.
-
-State path: terraform.tfstate
+Apply complete! Resources: 11 added, 0 changed, 0 destroyed.
 
 Outputs:
 
-Name = "terraform-state-ip-172-31-2-146"
+Name = "tf-state-ip-172-31-30-219-1623005594233019516"
 dynamodb_table_name_c9net = "terraform_locks_c9net"
 dynamodb_table_name_cicd = "terraform_locks_cicd"
 dynamodb_table_name_cluster = "terraform_locks_cluster"
@@ -399,11 +430,12 @@ dynamodb_table_name_eks-cidr = "terraform_locks_eks-cidr"
 dynamodb_table_name_iam = "terraform_locks_iam"
 dynamodb_table_name_net = "terraform_locks_net"
 dynamodb_table_name_nodeg = "terraform_locks_nodeg"
+dynamodb_table_name_sampleapp = "terraform_locks_sampleapp"
 region = [
   "eu-west-1",
 ]
 s3_bucket = [
-  "terraform-state-ip-172-31-2-146",
+  "tf-state-ip-172-31-30-219-1623005594233019516",
 ]
 {{< /output >}}
 

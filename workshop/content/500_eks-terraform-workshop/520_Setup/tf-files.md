@@ -11,7 +11,6 @@ weight: 525
 ---
 
 
-
 ### aws.tf
 
 This specifies the Terraform version requirements, the AWS region and profile from variables, and the AWS credentials from a local file if present.
@@ -31,8 +30,8 @@ terraform {
   required_providers {
     aws = {
     source = "hashicorp/aws"
-    #  Allow any 3.22+  version of the AWS provider
-    version = "~> 3.22"
+    #  Lock version to prevent unexpected problems
+    version = "3.39"
     }
     null = {
     source = "hashicorp/null"
@@ -44,7 +43,7 @@ terraform {
     }
     kubernetes = {
     source = "hashicorp/kubernetes"
-    version = "~> 1.13.2"
+    version = "1.13.3"
     }
     
   }
