@@ -87,7 +87,7 @@ You can safely ignore this and click `Don't Show Again`
 
 #### Check the Cloud9 IDE is setup correctly:
 
-```
+```bash
 ./check.sh
 ```
 
@@ -105,7 +105,7 @@ PASSED: Cloud9 IDE name is valid - contains eks-terraform
 
 #### Resize the operating system disk
 
-```
+```bash
 cd ~/environment/tfekscode
 ./resize-osdisk.sh
 ```
