@@ -27,7 +27,7 @@ Cloud9 requires third-party-cookies. You can whitelist the [specific domains]( h
 
 ### Launch Cloud9 in your closest region:
 
-Create a Cloud9 Environment: [https://eu-west-1.console.aws.amazon.com/cloud9/home?region=eu-west-1](https://eu-west-1.console.aws.amazon.com/cloud9/home?region=eu-west-1)
+Create a Cloud9 Environment using this link: [https://eu-west-1.console.aws.amazon.com/cloud9/home?region=eu-west-1](https://eu-west-1.console.aws.amazon.com/cloud9/home?region=eu-west-1)
 
 <!---
 {{< tabs name="Region" >}}
@@ -36,10 +36,28 @@ Create a Cloud9 Environment: [https://eu-west-1.console.aws.amazon.com/cloud9/ho
 {{< /tabs >}}
 --->
 
-- Select **Create environment**
-- Name it **eks-terraform**, click `Next`.
-- Choose **"t3.small"** for instance type, take all default values and click `Next Step`
-- and on the Review page double check the Name is set to "eks-terraform" and then click `Create environment`
+- Click `Create environment`
+
+On the next page:
+
+- Name it **eks-terraform**
+- Click `Next`.
+
+![c9after](/images/andyt/c9-create1.png)
+
+On the next screen choose these options:
+
+
+- **"Create a new no-ingress EC2 instance for environment (access via Systems Manager)"**
+- **"t3.small (2GiB RAM + 2CPU)"** 
+- **"Amazon Linux 2 (recommended)"**
+- Set the Cost-saving setting to **"After one hour"**
+- And click `Next Step`
+
+![c9after](/images/andyt/c9-create2.png)
+
+
+On the Review page double check the Name is set to "eks-terraform" and then click `Create environment`
 
 ----
 

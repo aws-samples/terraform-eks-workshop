@@ -36,7 +36,7 @@ To set your display email run "git config --global user.email YOUR_EMAIL_ADDRESS
 
 Clone the workshop repo and use a helper script to setup the workshop tools: 
 
-```bash
+```
 cd ~/environment
 ```
 
@@ -113,26 +113,13 @@ cd ~/environment/tfekscode
 This is some sample output from this script **this may include some warnings/errors - these can be ignored**
 
 {{< output >}}
-Collecting boto3
-  Downloading https://files.pythonhosted.org/packages/6d/7e/3668fb3049a568dead633f8727810e04db95fda9269effdaf8abab56b8fd/boto3-1.16.18-py2.py3-none-any.whl (129kB)
-    100% |████████████████████████████████| 133kB 4.9MB/s 
-Requirement already up-to-date: jmespath<1.0.0,>=0.7.1 in /usr/local/lib/python3.6/site-packages (from boto3)
-Requirement already up-to-date: s3transfer<0.4.0,>=0.3.0 in /usr/local/lib/python3.6/site-packages (from boto3)
-Collecting botocore<1.20.0,>=1.19.18 (from boto3)
-  Downloading https://files.pythonhosted.org/packages/d1/e4/3f243b98244f13ac3f7bbe3ec6c4f8473194a200e9785d68696dc5e0d72f/botocore-1.19.18-py2.py3-none-any.whl (6.8MB)
-    100% |████████████████████████████████| 6.8MB 197kB/s 
-Requirement already up-to-date: python-dateutil<3.0.0,>=2.1 in /usr/local/lib/python3.6/site-packages (from botocore<1.20.0,>=1.19.18->boto3)
-Collecting urllib3<1.27,>=1.25.4; python_version != "3.4" (from botocore<1.20.0,>=1.19.18->boto3)
-  Downloading https://files.pythonhosted.org/packages/f5/71/45d36a8df68f3ebb098d6861b2c017f3d094538c0fb98fa61d4dc43e69b9/urllib3-1.26.2-py2.py3-none-any.whl (136kB)
-    100% |████████████████████████████████| 143kB 7.9MB/s 
-Requirement already up-to-date: six>=1.5 in /usr/local/lib/python3.6/site-packages (from python-dateutil<3.0.0,>=2.1->botocore<1.20.0,>=1.19.18->boto3)
-Installing collected packages: urllib3, botocore, boto3
-Successfully installed boto3-1.16.18 botocore-1.19.18 urllib3-1.26.2
-You are using pip version 9.0.3, however version 20.2.4 is available.
-You should consider upgrading via the 'pip install --upgrade pip' command.
-{'VolumeModification': {'VolumeId': 'vol-00d49631551b76ee2', 'ModificationState': 'modifying', 'TargetSize': 30, 'TargetIops': 100, 'TargetVolumeType': 'gp2', 'OriginalSize': 10, 'OriginalIops': 100, 'OriginalVolumeType': 'gp2', 'Progress': 0, 'StartTime': datetime.datetime(2020, 11, 15, 13, 45, 28, tzinfo=tzlocal())}, 'ResponseMetadata': {'RequestId': '8a45385a-238e-4276-97d1-dbf4aacee230', 'HTTPStatusCode': 200, 'HTTPHeaders': {'x-amzn-requestid': '8a45385a-238e-4276-97d1-dbf4aacee230', 'content-type': 'text/xml;charset=UTF-8', 'transfer-encoding': 'chunked', 'vary': 'accept-encoding', 'date': 'Sun, 15 Nov 2020 13:45:28 GMT', 'server': 'AmazonEC2'}, 'RetryAttempts': 0}}
+DEPRECATION: Python 2.7 reached the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.7 is no longer maintained. pip 21.0 will drop support for Python 2.7 in January 2021. More details about Python 2 support in pip can be found at https://pip.pypa.io/en/latest/development/release-process/#python-2-support
+Resizing OS disk
+/home/ec2-user/.local/lib/python2.7/site-packages/boto3/compat.py:86: PythonDeprecationWarning: Boto3 will no longer support Python 2.7 starting July 15, 2021. To continue receiving service updates, bug fixes, and security updates please upgrade to Python 3.6 or later. More information can be found here: https://aws.amazon.com/blogs/developer/announcing-end-of-support-for-python-2-7-in-aws-sdk-for-python-and-aws-cli-v1/
+  warnings.warn(warning, PythonDeprecationWarning)
+{u'VolumeModification': {u'TargetSize': 30, u'OriginalMultiAttachEnabled': False, u'TargetVolumeType': 'gp2', u'ModificationState': 'modifying', u'TargetMultiAttachEnabled': False, u'VolumeId': 'vol-0b6189f48fa95b405', u'TargetIops': 100, u'StartTime': datetime.datetime(2021, 6, 6, 18, 38, 10, tzinfo=tzlocal()), u'Progress': 0, u'OriginalVolumeType': 'gp2', u'OriginalIops': 100, u'OriginalSize': 10}, 'ResponseMetadata': {'RetryAttempts': 0, 'HTTPStatusCode': 200, 'RequestId': 'e6376b56-f0ba-4f58-a434-f2985d7bf8c3', 'HTTPHeaders': {'x-amzn-requestid': 'e6376b56-f0ba-4f58-a434-f2985d7bf8c3', 'transfer-encoding': 'chunked', 'strict-transport-security': 'max-age=31536000; includeSubDomains', 'vary': 'accept-encoding', 'server': 'AmazonEC2', 'cache-control': 'no-cache, no-store', 'date': 'Sun, 06 Jun 2021 18:38:10 GMT', 'content-type': 'text/xml;charset=UTF-8'}}}
+Rebooting ....
 {{< /output >}}
-
 
 **At this point the Cloud9 IDE will disconnect - wait 2 minutes - then the terminal should reconnect**
 
