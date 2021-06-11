@@ -20,16 +20,16 @@ required_version = "~> 0.15.3"
 required_providers {
   aws = {
    source = "hashicorp/aws"
-#  Allow any 3.1x version of the AWS provider
-   version = "~> 3.22"
+#  Lock version to avoid unexpected problems
+   version = "3.39"
   }
   kubernetes = {
    source = "hashicorp/kubernetes"
-   version = "~> 1.13.2"
+   version = "1.13.3"
   }
  }
 backend "s3" {
-bucket = "terraform-state-ip-172-31-2-146"
+bucket = "tf-state-ip-172-31-30-219-1623007672838728669"
 key = "terraform/terraform_locks_net.tfstate"
 region = "eu-west-1"
 dynamodb_table = "terraform_locks_net"
@@ -41,6 +41,7 @@ region = var.region
 shared_credentials_file = "~/.aws/credentials"
 profile = var.profile
 }
+
 ```
 
 {{%/expand%}}

@@ -18,7 +18,7 @@ This specifies the Terraform version requirements, the AWS region and profile fr
 Look at the contents of the file aws.tf - this file is specifying to Terraform:
 
 - Which version of Terraform should be used **required_version = "~> 0.15.3"**.
-- Where the AWS, null and external "providers" come from and the version t0 use.
+- Where the AWS, null and external "providers" come from and the version to use.
 - And for the AWS provider itself, which region to use and where to get the AWS login credentials.
 
 
@@ -385,7 +385,8 @@ do
     printf "backend = \"s3\"\n" >> $of
     printf "config = {\n" >> $of
     printf "bucket = \"%s\"\n"  $s3b >> $of
-    printf "region = \"%s\"\n"  $reg >> $of
+ #   printf "region = \"%s\"\n"  $reg >> $of
+    printf "region = var.region\n"  >> $of
     printf "key = \"terraform/%s.tfstate\"\n"  $tabn >> $of
     printf "}\n" >> $of
     printf "}\n" >> $of

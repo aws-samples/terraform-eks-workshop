@@ -7,4 +7,4 @@ tags:
 ---
 
 
-In this Chapter, we will use Terraform to build a second node group.
+In this Chapter, we will use Terraform to build a second node group that uses SPOT instances.

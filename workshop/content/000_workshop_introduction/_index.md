@@ -28,7 +28,7 @@ tags:
 * Setting up the Workshop environment.
 * A Terraform introduction & primer for those unfamiliar with Terraform.
 * Building a private EKS cluster with Terraform.
-* Extra optional activities.
+* Extra optional activities, including SPOT instances
 * Conclusion.
 * Cleanup.
 

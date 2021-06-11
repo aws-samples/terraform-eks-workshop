@@ -4,7 +4,7 @@ date: 2018-09-18T16:01:14-05:00
 weight: 611
 ---
 
-## Create a second managed nodegroup.
+## Create a second managed nodegroup using SPOT instances
 
 
 ```bash
