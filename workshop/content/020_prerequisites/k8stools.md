@@ -63,10 +63,10 @@ Update OS tools
 Update pip
 Uninstall AWS CLI v1
 Install AWS CLI v2
-AWS_REGION is eu-west-3
-export ACCOUNT_ID=338236761706
-export AWS_REGION=eu-west-3
-export TF_VAR_region=eu-west-3
+AWS_REGION is aa-west-x
+export ACCOUNT_ID=xxxxxxxxxxxx
+export AWS_REGION=aa-west-x
+export TF_VAR_region=aa-west-x
 eu-west-3
 Setup Terraform cache
 Setup kubectl
@@ -95,9 +95,9 @@ eksctl in path
 helm in path
 kubectx in path
 Enable bash_completion
-PASSED: AWS_REGION is eu-west-3
-PASSED: TF_VAR_region is eu-west-3
-PASSED: ACCOUNT_ID is 338236761706
+PASSED: AWS_REGION is aa-west-x
+PASSED: TF_VAR_region is aa-west-x
+PASSED: ACCOUNT_ID is xxxxxxxxxxxx
 
 {{< /output >}}
 
