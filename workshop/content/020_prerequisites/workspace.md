@@ -5,12 +5,6 @@ weight: 14
 ---
 
 
-{{% notice warning %}}
-The Cloud9 workspace should be built by an IAM user with Administrator privileges,
-not the root account user. Please ensure you are logged in as an IAM user, not the root
-account user.
-{{% /notice %}}
-
 
 {{% notice info %}}
 This workshop was designed to run in the **Ireland (eu-west-1)** region. **Please don't
