@@ -18,9 +18,9 @@ Next use the **Continue with Login with Amazon** button:
 
 ![Event Engine](/images/andyt/amazon-login.png)
 
-Provide your Amazon Retail (shopping) credentials:
+Provide your own email address to get a one time passcode:
 
-![Event Engine](/images/andyt/amazon-login2.jpg)
+![Event Engine](/images/andyt/otp.jpg)
 
 Once logged in the Event Engine Dashboard will be displayed:
 
