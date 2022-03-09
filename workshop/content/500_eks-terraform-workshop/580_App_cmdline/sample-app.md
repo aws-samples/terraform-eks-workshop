@@ -642,7 +642,7 @@ ingress-2048   <none>   *                 80      5m27s
 Watching the aws-load-balancer-controller - open another terminal and use this command to watch the logs:
 
 ```
-kubectl logs `kubectl get pods -n kube-system | grep aws-load-balancer-controller | awk '{print $1}'` -n kube-system --follow
+kubectl logs  `kubectl get pods -n kube-system | grep aws-load-balancer-controller | awk '{print $1}' | head -1` -n kube-system --follow
 ```
 
 
