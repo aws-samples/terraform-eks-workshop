@@ -14,11 +14,7 @@ Connect to the portal by clicking the button or browsing to [https://dashboard.e
 
 Enter the provided hash in the text box. The button on the bottom right corner changes to **Accept Terms & Login**. Click on that button to continue.
 
-Next use the **Continue with Login with Amazon** button:
-
-![Event Engine](/images/andyt/amazon-login.png)
-
-Provide your own email address to get a one time passcode:
+Next provide your own email address to get a one time pass code:
 
 ![Event Engine](/images/andyt/otp.jpg)
 
