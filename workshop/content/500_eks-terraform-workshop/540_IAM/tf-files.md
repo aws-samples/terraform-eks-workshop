@@ -165,7 +165,7 @@ To these two roles, various policies are then defined and later on attached to t
 
 One example of a policy that is defined is shown here:
 
-### aws_iam_role_policy__cluster-ServiceRole__PolicyCloudWatchMetrics.tf
+### aws_iam_role_policy__cluster-ServiceRole__PolicyCloudWatchMetrics.tf
 
 {{%expand "Expand here to see the code" %}}
 ```bash
