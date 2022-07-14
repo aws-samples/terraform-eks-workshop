@@ -106,12 +106,12 @@ deployment.apps/deployment-2048   2/2     2            2           55s   app-204
 
 * The pods are deployed to a 100.64.x.x. address.
 * The service is exposing port 80.
-* The deployment is referencing a private ECR repository belonging to your account. (see the IMAGES section of thr deployment output)
+* The deployment is referencing a private ECR repository belonging to your account. (see the IMAGES section of the deployment output)
 
 
 ----
 
-Enable port forwarding so we can see the application in out Cloud9 IDE
+Enable port forwarding so we can see the application in our Cloud9 IDE
 
 ```
 kubectl port-forward service/service-2048 8080:80 -n game-2048
