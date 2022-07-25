@@ -161,7 +161,7 @@ default=7
 ### dynamodb-tables.tf
 
 
-This file specifies that Terraform should create the five dynamoDB tables used to hold the locks for accessing the Terraform state files we wil create later in the S3 bucket, Note the **depends_on** statement to ensure the S3 bucket gets created before the DynamoDB table.
+This file specifies that Terraform should create the five dynamoDB tables used to hold the locks for accessing the Terraform state files we will create later in the S3 bucket, Note the **depends_on** statement to ensure the S3 bucket gets created before the DynamoDB table.
 
 Note how this uses the special terraform "count" capability to create 7x **var.stagecount** different DynamoDB tables.
 Each table's name is constructed by assembling a string **format(** that contains a fixed value **terraform_locks** and a string value from our string array **%s",var.stages** - indexed by the **[count.index]**     
@@ -189,7 +189,7 @@ resource "aws_dynamodb_table" "terraform_locks" {
 
 ### get-bucket-name.sh
 
-This script simply returns a json formatted unique bucket name, the bucket wil be used to store the Terraform state files. This script is started by the  data "external" "bucket_name" resource in the s3-bucket.tf file (see later).
+This script simply returns a json formatted unique bucket name, the bucket will be used to store the Terraform state files. This script is started by the  data "external" "bucket_name" resource in the s3-bucket.tf file (see later).
 
 The only output this script is allowed to produce is a valid JSON formatted string. This is done in the last line of the code by the jq utility **jq -n --arg bn "$BUCKET_NAME" '{"Name":$bn}'**.
 

@@ -17,7 +17,7 @@ Initialize the Terraform backend environment:
 terraform init
 ```
 
-The command wil create a hidden directory in your file system called ".terraform" and it will download all the resource providers that are needed, for our environment this includes the aws, external and null providers:
+The command will create a hidden directory in your file system called ".terraform" and it will download all the resource providers that are needed, for our environment this includes the aws, external and null providers:
 
 
 {{< output >}}
