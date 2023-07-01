@@ -1,3 +1,17 @@
+# tf-eks-workshop
+
+This workshop content has been replaced by a newer version:
+
+[new version](https://catalog.us-east-1.prod.workshops.aws/workshops/afee4679-89af-408b-8108-44f5b1065cc7)
+
+
+
+--------
+
+
+--------
+
+
 [![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/aws-samples/terraform-eks-workshop) 
 
 # eksworkshop
